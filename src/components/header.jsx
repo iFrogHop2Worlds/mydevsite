@@ -1,6 +1,6 @@
 import React from 'react';
 import history from '../utils/history';
-import logo from '../logo.svg';
+import logo from '../spinner.png';
 import BillyBestLogo from '../BillyBestLogo1.png'
 // import { magic } from '../lib/magic';
 // import { UserContext } from '../lib/UserContext';
@@ -25,27 +25,27 @@ const Header = () => {
           <a href='/'><img id="logo" src={BillyBestLogo} alt="Logo-home"></img></a>
           <ul id='nav-ul'>
             <li id='nav-li'>
-              <button color='primary' size='sm' onClick={() => { history.push('/contact'); window.location.reload(); }}>
-                  contact me
+              <button id='navbtn' color='primary' size='sm' onClick={() => { history.push('/contact'); window.location.reload(); }}>
+                  contact
               </button>
             </li>
             <li id='nav-li'>
-              <button color='primary' size='sm' onClick={() => {history.push('/services'); window.location.reload(); }}>
+              <button id='navbtn' color='primary' size='sm' onClick={() => {history.push('/services'); window.location.reload(); }}>
                   services
               </button>
             </li>
             <li id='nav-li'>
-              <button color='primary' size='sm' onClick={() => {history.push('/demos'); window.location.reload(); }}>
+              <button id='navbtn' color='primary' size='sm' onClick={() => {history.push('/demos'); window.location.reload(); }}>
                   demos/applications
               </button>
             </li>
             <li id='nav-li'><a href='https://github.com/iFrogHop2Worlds'>
-              <button color='warning' size='sm' >
+              <button id='navbtn' color='warning' size='sm' >
                   github
               </button>
               </a></li>
             <li id='nav-li'>
-              <button color='primary' size='sm' onClick={() => {history.push('/articles'); window.location.reload(); }}>
+              <button id='navbtn' color='primary' size='sm' onClick={() => {history.push('/articles'); window.location.reload(); }}>
                 articles
               </button>
             </li>
@@ -59,27 +59,38 @@ const Header = () => {
 
       <style>{`
         nav {
+          
           border-bottom: 1px solid #f0f0f0;
         }
         #nav-ul {
           display: flex;
+          
           list-style: none;
         }
         #nav-li {
-          padding-left: 10px;
-          margin-left: 0.5rem;
           line-height: 12px;
+          margin-right: 1%;
+          margin-left: 1%;
         }
         #nav-li:first-child {
-          margin-left: auto;
+
         }
+        #navbtn {
+          background-color: #86fce5;
+          font-size: 21px;
+          border-radius: 32px;
+          opacity: 0.8;
+          
+        }
+        #navbtn:hover {opacity: 1}
         #logo {
-          padding: 25px;
-          height: 120px;
-          width: 120px;
+          padding-left: 75px;
+          height: 200px;
+          width: 300x;
         }
         #header-background {
-          background-image: url("https://images8.alphacoders.com/714/714662.png");
+          height: 260px;
+          background-image: url("https://free4kwallpapers.com/uploads/wallpaper/rubiks-cube-digital-art-wallpaper-2560x1440-wallpaper.jpg");
         }
       `}</style>
     </header>

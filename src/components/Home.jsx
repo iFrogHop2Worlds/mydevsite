@@ -5,14 +5,14 @@ export default function Home() {
   return (
     <div id='background-home'>
         <div >
-            <h3 id='headline'>Solving your problems is what I do</h3>
+            <p id='headline'>Solving your problems is what I do</p>
             <button>services</button> <button>contact me</button>
         </div>
         
 
     <style>{`
         #background-home {
-            background-image: url("https://i.redd.it/p9hjj8zscxo51.jpg");
+            background-image: url("https://free4kwallpapers.com/uploads/originals/2020/10/22/ethereal-peace-k-wallpaper.jpg");
             height: 900px;
             max-height: 550px;
             width: 100%;
@@ -20,9 +20,9 @@ export default function Home() {
         }
         #headline {
             padding-top: 220px;
-            color: #00fff2;
+            color: #ff4d00;
             font-size: 30px;
-            text-shadow: -1px -1px 0 #008079, 1px -1px 0 #008079, -1px 3px 0 #008079, 1px 1px 0 #008079;
+            text-shadow: -1px -1px 0 #008079, 1px -1px 0 #008079, -1px 1px 0 #008079, 1px 1px 0 #008079;
         }
 
     `}</style>
