@@ -1,6 +1,5 @@
 import React from 'react';
 import history from '../utils/history';
-import logo from '../spinner.png';
 import BillyBestLogo from '../BillyBestLogo1.png'
 // import { magic } from '../lib/magic';
 // import { UserContext } from '../lib/UserContext';
@@ -36,7 +35,7 @@ const Header = () => {
             </li>
             <li id='nav-li'>
               <button id='navbtn' color='primary' size='sm' onClick={() => {history.push('/demos'); window.location.reload(); }}>
-                  demos/applications
+                  demos
               </button>
             </li>
             <li id='nav-li'><a href='https://github.com/iFrogHop2Worlds'>
@@ -50,10 +49,6 @@ const Header = () => {
               </button>
             </li>
           </ul>
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-              under construction
-          </header>
         </div>
       </nav>
 
@@ -64,7 +59,6 @@ const Header = () => {
         }
         #nav-ul {
           display: flex;
-          
           list-style: none;
         }
         #nav-li {
@@ -78,7 +72,7 @@ const Header = () => {
         #navbtn {
           background-color: #86fce5;
           font-size: 21px;
-          border-radius: 32px;
+          border-radius: 42px;
           opacity: 0.8;
           
         }
@@ -89,8 +83,8 @@ const Header = () => {
           width: 300x;
         }
         #header-background {
-          height: 260px;
-          background-image: url("https://free4kwallpapers.com/uploads/wallpaper/rubiks-cube-digital-art-wallpaper-2560x1440-wallpaper.jpg");
+          height: 280px;
+          background-image: url("https://images2.imgbox.com/89/bd/PQYOUvLe_o.png");
         }
       `}</style>
     </header>
