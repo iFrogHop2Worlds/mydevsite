@@ -3,11 +3,12 @@ import Header from './header';
 import Footer from './footer';
 const Layout = (props) => (
   <>
-    <Header />
     <main>
+      <Header />
       <div className='container'>{props.children}</div>
+      <Footer />
     </main>
-    <Footer />
+    
     <style>{`
       * {
         font-family: sans-serif !important;

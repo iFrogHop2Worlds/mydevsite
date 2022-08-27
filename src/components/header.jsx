@@ -1,20 +1,8 @@
 import React from 'react';
 import history from '../utils/history';
 import BillyBestLogo from '../BillyBestLogo1.png'
-// import { magic } from '../lib/magic';
-// import { UserContext } from '../lib/UserContext';
-
 
 const Header = () => {
-//   const [user, setUser] = useContext(UserContext);
-
-//   const logout = () => {
-//     magic.user.logout().then(() => {
-//       setUser({ user: null });
-//       history.push('/');
-//     });
-//     console.log("logout button fired")
-//   };
 
   return (
     <header>
@@ -35,7 +23,7 @@ const Header = () => {
             </li>
             <li id='nav-li'>
               <button id='navbtn' color='primary' size='sm' onClick={() => {history.push('/demos'); window.location.reload(); }}>
-                  demos
+                  projects
               </button>
             </li>
             <li id='nav-li'><a href='https://github.com/iFrogHop2Worlds'>
@@ -54,17 +42,15 @@ const Header = () => {
 
       <style>{`
         nav {
-          
-          border-bottom: 1px solid #f0f0f0;
+          border-bottom: 1px solid #ba0707;
         }
         #nav-ul {
           display: flex;
           list-style: none;
         }
         #nav-li {
-          line-height: 12px;
-          margin-right: 1%;
-          margin-left: 1%;
+          margin-right: 0.35%;
+          margin-left: 0.35%;
         }
         #nav-li:first-child {
 
@@ -79,11 +65,11 @@ const Header = () => {
         #navbtn:hover {opacity: 1}
         #logo {
           padding-left: 75px;
-          height: 200px;
+          height: 212px;
           width: 300x;
         }
         #header-background {
-          height: 280px;
+          height: 300px;
           background-image: url("https://images2.imgbox.com/89/bd/PQYOUvLe_o.png");
         }
       `}</style>
