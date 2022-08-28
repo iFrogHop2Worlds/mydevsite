@@ -12,7 +12,7 @@ export default function Home() {
                     <p id='headline'>Creating custom solutions to serve your needs is what I do</p>
                     <p id='tagline'>traditional web, web3, closed systems</p>    
                 </div>
-            <button>services</button> <button>contact me</button>
+            <a href='/services'><button>services</button></a> <a href='/contact'><button>contact me</button></a>
         </div>
         
 
@@ -22,7 +22,6 @@ export default function Home() {
             height: 900px;
             max-height: 650px;
             width: 100%;
-            
         }
         #headline {
             padding-top: 20px;

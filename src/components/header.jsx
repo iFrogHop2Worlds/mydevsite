@@ -6,9 +6,8 @@ const Header = () => {
 
   return (
     <header>
-      
-      <nav>
-        <div id='header-background'>
+      <div id='header-background'>
+        <nav>
           <a href='/'><img id="logo" src={BillyBestLogo} alt="Logo-home"></img></a>
           <ul id='nav-ul'>
             <li id='nav-li'>
@@ -22,7 +21,7 @@ const Header = () => {
               </button>
             </li>
             <li id='nav-li'>
-              <button id='navbtn' color='primary' size='sm' onClick={() => {history.push('/demos'); window.location.reload(); }}>
+              <button id='navbtn' color='primary' size='sm' onClick={() => {history.push('/projects'); window.location.reload(); }}>
                   projects
               </button>
             </li>
@@ -36,25 +35,23 @@ const Header = () => {
                 articles
               </button>
             </li>
-          </ul>
-        </div>
-      </nav>
-
+          </ul>   
+        </nav>
+      </div>
       <style>{`
         nav {
-          border-bottom: 1px solid #ba0707;
+          border-bottom: 2px solid #ba0707;
         }
         #nav-ul {
           display: flex;
           list-style: none;
+         
         }
         #nav-li {
-          margin-right: 0.35%;
-          margin-left: 0.35%;
+          margin-right: 0.15%;
+          margin-left: 0.15%;
         }
-        #nav-li:first-child {
 
-        }
         #navbtn {
           background-color: #86fce5;
           font-size: 21px;
@@ -69,6 +66,7 @@ const Header = () => {
           width: 300x;
         }
         #header-background {
+    
           height: 300px;
           background-image: url("https://images2.imgbox.com/89/bd/PQYOUvLe_o.png");
         }
