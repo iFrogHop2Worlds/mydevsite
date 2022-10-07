@@ -2,11 +2,14 @@ import React from 'react';
 import history from '../utils/history';
 import BillyBestLogo from '../BillyBestLogo1.png'
 
+
 const Header = () => {
 
   return (
     <header>
+
       <div id='header-background'>
+      
         <nav>
           <a href='/'><img id="logo" src={BillyBestLogo} alt="Logo-home"></img></a>
           <ul id='nav-ul'>
@@ -39,8 +42,10 @@ const Header = () => {
         </nav>
       </div>
       <style>{`
+
         nav {
           border-bottom: 2px solid #ba0707;
+          top:0;
         }
         #nav-ul {
           display: flex;
@@ -55,21 +60,24 @@ const Header = () => {
         #navbtn {
           background-color: #86fce5;
           font-size: 21px;
-          border-radius: 42px;
           opacity: 0.8;
           
         }
         #navbtn:hover {opacity: 1}
         #logo {
+          display: flex;
+          justify-content: center;
           padding-left: 75px;
           height: 212px;
           width: 300x;
+          ;
         }
         #header-background {
-    
-          height: 300px;
-          background-image: url("https://images2.imgbox.com/89/bd/PQYOUvLe_o.png");
+          background-color: black;
+          background-repeat: no-repeat; 
+          background-size: cover;  
         }
+
       `}</style>
     </header>
   );

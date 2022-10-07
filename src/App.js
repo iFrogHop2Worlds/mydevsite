@@ -6,11 +6,12 @@ import Services from './components/services';
 import Demos from './components/demos';
 import Articles from './components/articles';
 import Home from './components/Home';
+import Footer from './components/footer';
 
 function App() {
   
   return (
-    <Layout>
+
       <div className="App">
       <Routes>
         <Route path='/' element={<Home />} />
@@ -19,8 +20,9 @@ function App() {
         <Route path='/projects' element={<Demos />} />  
         <Route path='/articles' element={<Articles />} />     
       </Routes>
+      <Footer />
       </div>
-    </Layout>
+
   );
 }
 

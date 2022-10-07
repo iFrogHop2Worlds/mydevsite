@@ -29,6 +29,8 @@ export default function Footer() {
                 width: 100%;  
                 color: #faffff;
                 padding-top:20px;
+                
+            
             }
             ul {
                 display: flex;
@@ -36,9 +38,10 @@ export default function Footer() {
                 padding-top: 21px;
             }
             li {
+                width: 330px;
                 line-height: 12px;
-                margin-right: 11%;
-                margin-left: 11%;
+                padding-right: 6%;
+                padding-left: 6%;
             }
         `}</style>
     </div>

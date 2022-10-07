@@ -23,10 +23,9 @@ export default function Contact() {
     <div id='contact'>
       <div id='email-phone'>
         <p>email: <a href='mailto:bill@maasdao.io'>bill@maasdao.io</a></p>
-        <p>phone: 604 700 7524</p>
       </div>  
       <div id='questions'>
-        <h4>Ask general questions</h4>
+        <h4 id='askcontact'>Ask general questions</h4>
         <form>
           <label for="name"><b>Name </b>(optional) </label><br/>
           <input type="text" id="name" name="name" size="40" maxlength="39" onChange={handleFormInput}/><br/>
@@ -46,6 +45,7 @@ export default function Contact() {
           height: 900px;
           max-height: 650px;
           width: 100%;
+          padding-top:100px;
         }
         #questions {
           background-color: #1e282e;
@@ -58,6 +58,9 @@ export default function Contact() {
         }
         #form-submit {
           margin-top: 10px;
+        }
+        #askcontact {
+          color: orange;
         }
         
     `}</style>

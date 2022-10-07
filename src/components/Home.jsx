@@ -1,27 +1,50 @@
 import React from 'react'
 import logo from '../spinner.png';
+import sparkles from '../sparkles1.mp4'
+
+
 export default function Home() {
   return (
+    <>
     <div id='background-home'>
-    {/* <video autoplay muted loop>
-        <source src="https://www.youtube.com/watch?v=2Gg6Seob5Mg" type="video/mp4" />
-    </video> */}
-        <div>
-            <img id='home-graphic' src={logo} className="App-logo" alt="logo" />
+        <video loop autoPlay>
+            <source
+            src={sparkles}
+            type="video/mp4"
+            />
+            Your browser does not support the video tag.
+        </video>
+        <div id='content'>
+                <h3>Billy Best</h3>
+            {/* <img id='home-graphic' src={logo} className="App-logo" alt="logo" /> */}
                 <div id='landing-cta'>
-                    <p id='headline'>Creating custom solutions to serve your needs is what I do</p>
-                    <p id='tagline'>traditional web, web3, closed systems</p>    
+                    <p id='headline'>Custom code solutions to serve your needs.</p>
+                    <p id='tagline'>traditional web, web3, closed systems.</p>    
                 </div>
             <a href='/services'><button>services</button></a> <a href='/contact'><button>contact me</button></a>
         </div>
         
-
+        </div>
     <style>{`
         #background-home {
-            background-image: url("https://free4kwallpapers.com/uploads/originals/2020/10/22/ethereal-peace-k-wallpaper.jpg");
-            height: 900px;
-            max-height: 650px;
             width: 100%;
+            height: 100%;
+           
+        }
+        #content {
+            width: 100%;
+            height: 50%;
+            bottom: 0;
+            position: fixed;
+            margin-bottom:300px;
+        }
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: auto%;
+            
         }
         #headline {
             padding-top: 20px;
@@ -44,13 +67,26 @@ export default function Home() {
             border-radius: 42px;
             outline-style: solid;
         }
-        #home-graphic {
+        h3 {
             margin-top: 120px;
-            width: 160px;
-            height: 160px;
+            font-size: 42px;
+            font-family: Helvetica;
+            color: white;
+            text-shadow: -1px -1px 0 #000000, 2px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+        }
+        @media only screen and (max-width: 900px) {
+            #headline {
+            padding-top: 40px;
+            }
+            #tagline {
+                margin-top: 55px;
+            }
+            button {
+                margin-top: 100px;
+            }
         }
 
     `}</style>
-    </div>
+    </>     
   )
 }
