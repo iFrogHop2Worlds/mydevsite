@@ -1,15 +1,26 @@
-import React from 'react'
-import logo from '../spinner.png';
-import sparkles from '../sparkles1.mp4'
+import React, {useState, useEffect} from 'react'
+//import sparkles from '../sparkles1.mp4'
 
 
 export default function Home() {
+    // const [sparkles, setSparkles] = useState([]);
+
+    // useEffect(() => {
+    //    fetch('http://127.0.0.1:8080/sparkles1.mp4')
+    //       .then((res) => {
+    //          console.log(res);
+    //          setSparkles(res);
+    //       })
+    //       .catch((err) => {
+    //          console.log(err.message);
+    //       });
+    // }, []);
   return (
     <>
     <div id='background-home'>
         <video loop autoPlay>
             <source
-            src={sparkles}
+            src='http://127.0.0.1:8080/sparkles1.mp4'
             type="video/mp4"
             />
             Your browser does not support the video tag.
