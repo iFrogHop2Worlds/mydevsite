@@ -6,6 +6,7 @@ import Services from './components/services';
 import Demos from './components/demos';
 import Articles from './components/articles';
 import Home from './components/Home';
+import Header from './components/header';
 import Footer from './components/footer';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   return (
 
       <div className="App">
+      <Header />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/contact' element={<Contact />} />

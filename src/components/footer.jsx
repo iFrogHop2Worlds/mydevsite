@@ -20,16 +20,15 @@ export default function Footer() {
                     <li>twitter</li>
                 </li>
             </ul>
-        </div>
+        </div> 
         <style>{`
             #footer {
                 background-color: #000000;
                 height: 300px;
-                max-height: 200px;
                 width: 100%;  
                 color: #faffff;
                 padding-top:20px;
-                
+               
             
             }
             ul {
