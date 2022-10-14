@@ -4,20 +4,20 @@ export default function Footer() {
   return (
     <div>
         <div id='footer'>
-            <ul>
-                <li>testimonials
+            <ul id='footer-ul'>
+                <li id='footer-li'>testimonials
                     <p> </p>
-                    <li>Person1: easy to work with, quality work...</li>
+                    <li id='footer-li'>Person1: easy to work with, quality work...</li>
                 </li>
-                <li>Affiliates
+                <li id='footer-li'>Affiliates
                     <p> </p>
-                    <li>maasdao</li>
+                    <li id='footer-li'>maasdao</li>
                 </li>
-                <li>socials
+                <li id='footer-li'>socials
                     <p> </p>
-                    <li>github</li>
-                    <li>email</li>
-                    <li>twitter</li>
+                    <li id='footer-li'>github</li>
+                    <li id='footer-li'>email</li>
+                    <li id='footer-li'>twitter</li>
                 </li>
             </ul>
         </div> 
@@ -28,15 +28,16 @@ export default function Footer() {
                 width: 100%;  
                 color: #faffff;
                 padding-top:20px;
-               
+     
+           
             
             }
-            ul {
+            #footer-ul {
                 display: flex;
                 list-style: none;
                 padding-top: 21px;
             }
-            li {
+           #footer-li {
                 width: 330px;
                 line-height: 12px;
                 padding-right: 6%;

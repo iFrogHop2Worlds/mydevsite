@@ -1,6 +1,4 @@
 import React from 'react'
-import Footer from './footer'
-
 
 export default function Services() {
   return (
@@ -28,7 +26,7 @@ export default function Services() {
               </section>
             </li>
           </ul>
-   
+
         <style>{`
         #background {
           height: 600px;

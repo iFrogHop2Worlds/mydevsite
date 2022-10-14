@@ -1,17 +1,13 @@
 import React from 'react';
 import history from '../utils/history';
-import BillyBestLogo from '../BillyBestLogo1.png'
 
 
 const Header = () => {
 
   return (
-    <header>
-
+    <>
       <div id='header-background'>
-      
-        <nav>
-        
+        <nav>  
           <ul id='nav-ul'>
             <li id='nav-li'>
               <button id='navbtn' color='primary' size='sm' onClick={() => { history.push('/'); window.location.reload(); }}>
@@ -19,16 +15,16 @@ const Header = () => {
               </button>
             </li>
             <li id='nav-li'>
-              <button id='navbtn' color='primary' size='sm' onClick={() => {history.push('/services'); window.location.reload(); }}>
-                  About me
-              </button>
+              <a href='#about-me'>
+                <button id='navbtn' color='primary' size='sm'>About me</button>
+              </a>
             </li>
             <li id='nav-li'>
-              <button id='navbtn' color='primary' size='sm' onClick={() => {history.push('/projects'); window.location.reload(); }}>
-                  Projects
-              </button>
+            <a href='#projects'>
+                <button id='navbtn' color='primary' size='sm'>Work</button>
+              </a>
             </li>
-            <li id='nav-li'><a href='https://github.com/iFrogHop2Worlds'>
+            <li id='nav-li'><a href="https://github.com/iFrogHop2Worlds" target="_blank" rel="noopener noreferrer">
               <button id='navbtn' color='warning' size='sm' >
                   Github
               </button>
@@ -42,13 +38,13 @@ const Header = () => {
         </nav>
       </div>
       <style>{`
-
         nav {
           border-bottom: 1px solid #00ff6e;
-          top:0;
           display: flex;
           justify-content: center;
+
         }
+
         #nav-ul {
           display: flex;
           list-style: none;
@@ -76,11 +72,15 @@ const Header = () => {
 
         #header-background {
           background-color: black;
-
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index:1;
         }
 
       `}</style>
-    </header>
+    </>
+    
   );
 };
 
