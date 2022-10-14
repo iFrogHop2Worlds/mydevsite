@@ -27,10 +27,7 @@ export default function Footer() {
                 height: 300px;
                 width: 100%;  
                 color: #faffff;
-                padding-top:20px;
-     
-           
-            
+                padding-top:20px; 
             }
             #footer-ul {
                 display: flex;
