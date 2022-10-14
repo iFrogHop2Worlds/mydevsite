@@ -12,11 +12,17 @@ export default function Home() {
         1500: { items: 5 }
     };
     const items = [
-        <div className="item" data-value="1">1</div>,
-        <div className="item" data-value="2">2</div>,
-        <div className="item" data-value="3">3</div>,
-        <div className="item" data-value="4">4</div>,
-        <div className="item" data-value="5">5</div>,
+        <div className="item_1 item center-content" data-value="1"><p className='item_title'>The Squid Squad</p></div>,
+        <div className="item_2 item center-content" data-value="2"><p className='item_title'>Mintagram</p></div>,
+        <div className="item_3 item center-content" data-value="3"><p className='item_title'>Common Pool Resource Manager</p></div>,
+        <div className="item_4 item center-content" data-value="4"><p className='item_title'>Banking/Financial Tools</p></div>,
+        <div className="item_5 item center-content" data-value="5"><p className='item_title'>SeaToSky - Wordpress</p></div>,
+        <div className="item_6 item center-content" data-value="6"><p className='item_title'>Coastal Living - Wordpress</p></div>,
+        <div className="item_7 item center-content" data-value="7"><p className='item_title'>Peripheri Digital - Wordpress</p></div>,
+        <div className="item_8 item center-content" data-value="8"><p className='item_title'>Kubo Cannabis - Wordpress</p></div>,
+        <div className="item_9 item center-content" data-value="9"><p className='item_title'>Project CB - a data aggregator</p></div>,
+        <div className="item_10 item center-content" data-value="10"><p className='item_title'>Client Personal Site</p></div>,
+        <div className="item_11 item center-content" data-value="11"><p className='item_title'>E-Signature-Generator-Revamp</p></div>,
       ];
 
     return (
@@ -38,7 +44,6 @@ export default function Home() {
                 </div>
                 <p id='tagline'>Projects I built or participated on</p>     
                 <AliceCarousel
-                    className='center-content'
                     mouseTracking
                     items={items}
                     responsive={responsive}
@@ -170,14 +175,60 @@ export default function Home() {
                 border-bottom: 5px solid #00ff6e;
             }
 
+            .alice-carousel__wrapper {  
+                margin-left: 5%;
+              
+            }
             .alice-carousel__next-btn-item {  
                padding-right: 99%;
             }
             .item {
-
-                background-image: url('https://www.lawrenceprospera.org/images/quintana/Page_Under_Construction.jpg');
                 height: 300px;
                 width: 300px;
+                background-size: cover; 
+                background-position: center;
+                float: middle;         
+            }
+            .item_title {
+                color: #00ff6e;
+                text-shadow: -1px -1px 0 #000000, 2px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+                font-size: 20px;
+                position: absolute;
+                bottom: 0;
+                text-align: center;
+            }
+            .item_1 {
+                background-image: url('https://images2.imgbox.com/23/db/SDnbJzVB_o.png');
+            }
+            .item_2 {
+                background-image: url('https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_thumbnail_photos/001/871/600/datas/medium.png');
+            }
+            .item_3 {
+                background-image: url('https://blogs.lse.ac.uk/lsereviewofbooks/files/2012/06/ElinorOstrom.jpg');
+            }
+            .item_4 {
+                background-image: url('https://i.pinimg.com/736x/3e/3c/3b/3e3c3bc6edec72b47fd03d562d455b13.jpg');
+            }
+            .item_5 {
+                background-image: url('https://images2.imgbox.com/b6/8f/Wot37ur8_o.png');
+            }
+            .item_6 {
+                background-image: url('https://images2.imgbox.com/49/9e/HEcDI9Wf_o.png');
+            }
+            .item_7 {
+                background-image: url('https://images2.imgbox.com/9e/f3/OqXaKeX3_o.png');
+            }
+            .item_8 {
+                background-image: url('https://images2.imgbox.com/8c/4c/J4r0vedG_o.png');
+            }
+            .item_9 {
+                background-image: url('https://www.lawrenceprospera.org/images/quintana/Page_Under_Construction.jpg');
+            }
+            .item_10 {
+                background-image: url('https://www.lawrenceprospera.org/images/quintana/Page_Under_Construction.jpg');
+            }
+            .item_11 {
+                background-image: url('https://images2.imgbox.com/1b/c4/5mZSJ1Yw_o.png');
             }
 
             .top {
@@ -226,6 +277,7 @@ export default function Home() {
                 .alice-carousel__next-btn{
                     padding-right: 30%;
                 }
+
             
             }
             #bottom-spacer {
