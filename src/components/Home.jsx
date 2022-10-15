@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-//import sparkles from '../sparkles1.mp4'
 
 
 export default function Home() {
@@ -54,7 +53,7 @@ export default function Home() {
                 </div>
            
                 <p className='col-text'>
-                I have been programming for 5 years and working for 2+. A master of innovation. My power is problem solving and creating unique solutions designed for you. I harness my past experiences and couple them with some developer wizardry to provide thoughtful well-designed programs and websites with security in mind.  
+                I have been programming for 5 years and doing so professionally for 2+. A master of innovation. My power is problem solving and creating unique solutions designed for you. I harness my past experiences and couple them with some developer wizardry to provide thoughtful well-designed programs and websites with security in mind.  
                 </p>
                 <p className='col-text'>
                 Technology drives the process. I embrace and use whatever tools are necessary for the job. I know no limits.  I specialize in the MERN stack but often I’ll be working in c++, solidity, python, java. With MERN I can create any UI/UX for a personalized and effortless experience. Depending on your needs ill switch flavors of react to make sure you don’t lose any SEO opportunities and keep performance top notch. Speed is everything. 

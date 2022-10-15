@@ -4,24 +4,27 @@ export default function Resume() {
   return (
     <div id='resume-background'>
     <h2>Billy Best</h2>
-    <p id='resume-text'>Modern web developer with experience using new web3 technologies.</p>
+    <p id='resume-text'>Modern Full Stack Developer with experience using web3 technologies.</p>
     <p id='resume-text'>Burnaby, BC V5C 5N2</p>
-    <p id='resume-text'>bill@maasdao.io</p>
+    <p id='resume-text'>email: <a href='mailto:bill@maasdao.io'>bill@maasdao.io</a></p>
     <p id='resume-text'>+1 604 700 7524</p>
     <p id='resume-text'></p>
-
+    
+    <hr></hr>
     <ul id='resume-ul'>
-      <li id='resume-li'>Developed feature rich smart contracts for the ethereum blockchain. Mostly using the brownie</li>
+      <li id='resume-li'>Developed feature rich smart contracts for the ethereum blockchain.</li>
       <li id='resume-li'>Building api's in node.js </li>
       <li id='resume-li'>Building front end clients with React </li>
       <li id='resume-li'>Custom wordpress theme development in php/js</li>
     </ul>
+    <br></br>
 
-    <h5>Work Experience</h5>
+    <h2>Work Experience</h2>
     <p id='resume-text'>Full Stack Developer</p>
-    <p id='resume-text'>FREELANCE - Burnaby, BC</p>
+    <p id='resume-text'>FREELANCE - Vancouver, BC</p>
     <p id='resume-text'>January 2020 to Present</p>
     <p id='resume-text'>Working on small to medium sized websites, solutions using primarily php/wordpress and the mern stack.</p>
+    <hr></hr>
 
     <p id='resume-text'>Full Stack Developer</p>
     <p id='resume-text'>Chainlink Hackahon - internet</p>
@@ -33,45 +36,52 @@ hosted a verifiable random and automated lottery on the blockchain as well as fa
 auctions with no 3rd party intermediary.The application was built in react/TypeScript, Solidity, python.
 and could be found here. https://github.com/Hackr-Sach/Mintagram</p>
 
+<hr></hr>
+
 <p id='resume-text'>Full Stack Developer</p>
     <p id='resume-text'>Avalanche Hackahon - internet</p>
-    <p id='resume-text'>December 2021 to November 2021</p>
+    <p id='resume-text'>December 2021 to January 2022</p>
     <p id='resume-text'>The Avalanche hackathon..</p>
 
+<hr></hr>  
 
-    <h5>Education</h5>
+    <h2>Education</h2>
     <p id='resume-text'>Self taught in Computer Science</p>
     
-    <h5>Skiils</h5>
+    <h3>Skiils</h3>
     <ul id='resume-ul'>
-      <li id='resume-li'>Git</li>
-      <li id='resume-li'>PHP</li>
-      <li id='resume-li'>Node.js</li>
       <li id='resume-li'>JavaScript</li>
-      <li id='resume-li'>CSS</li>
+      <li id='resume-li'>TypeScript</li>
+      <li id='resume-li'>Python</li>
       <li id='resume-li'>C++</li>
       <li id='resume-li'>solidity</li>
-      <li id='resume-li'>React</li>
-      <li id='resume-li'>Python</li>
-      <li id='resume-li'>Brownie</li>
-      <li id='resume-li'>WordPress</li>
-      <li id='resume-li'>Adobe Photoshop</li>
-      <li id='resume-li'>TypeScript</li>
-      <li id='resume-li'>MongoDB</li>
+      <li id='resume-li'>CSS</li>
       <li id='resume-li'>HTML5</li>
+      <li id='resume-li'>PHP</li>
+      <li id='resume-li'>WordPress</li>
+      <li id='resume-li'>MongoDB</li>
       <li id='resume-li'>Express.js</li>
+      <li id='resume-li'>React</li>
+      <li id='resume-li'>Node.js</li>
+      <li id='resume-li'>Brownie</li>
       <li id='resume-li'>APIs</li>
-      <li id='resume-li'>Git</li>
       <li id='resume-li'>Burp Suite</li>
+      <li id='resume-li'>Git</li>
+      <li id='resume-li'>Linux</li>
+      <li id='resume-li'>Windows</li>
+      <li id='resume-li'>Digital Ocean</li>
+      <li id='resume-li'>Adobe Photoshop</li>
+      <li id='resume-li'>Sony Vegas</li>
+      <li id='resume-li'>Google'ing</li>
     </ul>
 
-    <h5>Links</h5>
+    <h3>Links</h3>
     <ul id='resume-ul'>
       <li id='resume-li'><a href='http://billsdev.space/'>My developer site</a></li>
       <li id='resume-li'><a href='https://github.com/iFrogHop2Worlds'>github.com/iFrogHop2Worlds</a></li>
     </ul>
 
-    <h5>Certifications and Licenses</h5>
+    <h2>Certifications and Licenses</h2>
     <p id='resume-text'><b>M220JS: MongoDB for JavaScript Developers</b></p>
     <p id='resume-text'><a href='https://university.mongodb.com/course_completion/3ffe1524-40e9-4fc9-90b0-82d0e0b2d99a?
 utm_source=copy&utm_medium=social&utm_campaign=university_social_sharing'>certificate link</a></p>
@@ -108,11 +118,13 @@ Currently studying and practising ethical hacking to up my security game.</p>
       text-align: left;
       padding-left: 15%;
       padding-right: 50%;
-
+      padding-bottom: 1px;
     }
     #resume-li {
-    
       padding-right: 40px;
+    }
+    #resume-text {
+      font-family: 'Roboto Mono', monospace;
     }
   `}</style>
 </div>
