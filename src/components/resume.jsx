@@ -111,6 +111,7 @@ utm_source=copy&utm_medium=social&utm_campaign=university_social_sharing'>certif
 
     <style>{`
     #resume-background {
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto+Mono:wght@100&display=swap');
       background-color: #1e282e;
       color: #ffffff;
       height: auto;

@@ -36,6 +36,7 @@ export default function Services() {
 
 
         <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto+Mono:wght@100&display=swap');
         #background {
           height: auto;
           background-color: #1e282e;
@@ -86,7 +87,7 @@ export default function Services() {
           font-family: 'Poppins', sans-serif;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto+Mono:wght@100&display=swap');
+       
       `}</style>
     </div>
   )

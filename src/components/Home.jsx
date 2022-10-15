@@ -6,27 +6,27 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 
 export default function Home() {
+
     const responsive = {
         400: { items: 1 },
         668: { items: 2 },
         1024: { items: 3 },
         1500: { items: 5 }
     };
+
     const items = [
-        <Link to={'/product-single'} state={{ from: "squidsquad" }}><div className="item_1 item center-content" data-value="1"><p className='item_title'>The Squid Squad</p></div></Link>,
-        <Link to={'/product-single'} state={{ from: "mintagram" }}><div className="item_2 item center-content" data-value="2"><p className='item_title'>Mintagram</p></div></Link>,
-        <Link to={'/product-single'} state={{ from: "cprmanager" }}><div className="item_3 item center-content" data-value="3"><p className='item_title'>Common Pool Resource Manager</p></div></Link>,
-        <Link to={'/product-single'} state={{ from: "fintech" }}><div className="item_4 item center-content" data-value="4"><p className='item_title'>Banking/Financial Tools</p></div></Link>,
-        <Link to={'/product-single'} state={{ from: "s2s" }}><div className="item_5 item center-content" data-value="5"><p className='item_title'>SeaToSky - Wordpress</p></div></Link>,
-        <Link to={'/product-single'} state={{ from: "coastal-living" }}><div className="item_6 item center-content" data-value="6"><p className='item_title'>Coastal Living - Wordpress</p></div></Link>,
-        <Link to={'/product-single'} state={{ from: "peri-fairy" }}><div className="item_7 item center-content" data-value="7"><p className='item_title'>Peripheri Digital - Wordpress</p></div></Link>,
-        <Link to={'/product-single'} state={{ from: "kubo" }}><div className="item_8 item center-content" data-value="8"><p className='item_title'>Kubo Cannabis - Wordpress</p></div></Link>,
-        <Link to={'/product-single'} state={{ from: "projectcb" }}><div className="item_9 item center-content" data-value="9"><p className='item_title'>Project CB - a data aggregator</p></div></Link>,
-        <Link to={'/product-single'} state={{ from: "chloe" }}><div className="item_10 item center-content" data-value="10"><p className='item_title'>Client Personal Site</p></div></Link>,
-        <Link to={'/product-single'} state={{ from: "shape" }}><div className="item_11 item center-content" data-value="11"><p className='item_title'>E-Signature-Generator-Revamp</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "The Squid Squad" }}><div className="item_1 item center-content" data-value="1"><p className='item_title'>The Squid Squad</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Mintagram" }}><div className="item_2 item center-content" data-value="2"><p className='item_title'>Mintagram</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "CPR Manager" }}><div className="item_3 item center-content" data-value="3"><p className='item_title'>Common Pool Resource Manager</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Finance Tools" }}><div className="item_4 item center-content" data-value="4"><p className='item_title'>Banking/Financial Tools</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Sea2Sky" }}><div className="item_5 item center-content" data-value="5"><p className='item_title'>SeaToSky - Wordpress</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Coastal Living" }}><div className="item_6 item center-content" data-value="6"><p className='item_title'>Coastal Living - Wordpress</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Peri" }}><div className="item_7 item center-content" data-value="7"><p className='item_title'>Peripheri Digital - Wordpress</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Kubo" }}><div className="item_8 item center-content" data-value="8"><p className='item_title'>Kubo Cannabis - Wordpress</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Project cb" }}><div className="item_9 item center-content" data-value="9"><p className='item_title'>Project CB - a data aggregator</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Chloe" }}><div className="item_10 item center-content" data-value="10"><p className='item_title'>Client Personal Site</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "E-Sig-Generator" }}><div className="item_11 item center-content" data-value="11"><p className='item_title'>E-Signature-Generator-Revamp</p></div></Link>,
       ];
-
-
 
     return (
         <>
@@ -80,6 +80,7 @@ export default function Home() {
         </div>
         
         <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto+Mono:wght@100&display=swap');
             #background-home {
                 width: auto;
                 height: auto;
