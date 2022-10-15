@@ -3,50 +3,33 @@ import React from 'react'
 export default function Services() {
   return (
     <div id='background'>
+     <div class="row">
+      <div class="column">Websites/Applications</div>
+      <div class="column">Update Codebase</div>
+      <div class="column">Security Audit</div>
+      <div class="column">Consultation</div>
+    </div> 
 
-      <ul id='services-ul'>
-            <li id='services'>
-              <section color='primary' size='sm' onClick={() => {}}>
-                  Consultation
-              </section>
-            </li>
-            <li id='services'>
-              <section color='primary' size='sm' onClick={() => {}}>
-                  Modernize your codebase
-              </section>
-            </li>
-            <li id='services'>
-              <section color='primary' size='sm' onClick={() => {}}>
-                  Applications/websites
-              </section>
-            </li>
-            <li id='services'>
-              <section color='primary' size='sm' onClick={() => {}}>
-                  Application security
-              </section>
-            </li>
-          </ul>
 
         <style>{`
         #background {
           height: 600px;
           background-color: #1e282e;
           color: #ffffff;
-          padding-top: 120px;
-          
-        
+          padding-top: 120px;  
         }
-        #services {
-          height: 300px;
-       
-          line-height: 1.6;
+        .column {
+          float: left;
+          width: 350px;
+          padding: 10px;
           
         }
-        #services-ul {
 
-        }
-        li {
-
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
         }
       `}</style>
     </div>
