@@ -24,6 +24,8 @@ export default function Home() {
         <div className="item_11 item center-content" data-value="11"><p className='item_title'>E-Signature-Generator-Revamp</p></div>,
       ];
 
+
+
     return (
         <>
         <div id='background-home'>
@@ -42,7 +44,11 @@ export default function Home() {
                     mouseTracking
                     items={items}
                     responsive={responsive}
-                    controlsStrategy="alternate"
+                    autoPlayInterval={2500}
+                    autoPlayDirection="ltr"
+                    autoPlay={true}
+                    mouseTrackingEnabled={true}
+            
                 />
               
                 <div id='about-me' className='center-content'>
@@ -81,7 +87,7 @@ export default function Home() {
                 
             
             }
-
+            
             #content {
                 width: 100%;
                 height: 100%;  

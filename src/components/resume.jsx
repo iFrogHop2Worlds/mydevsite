@@ -81,6 +81,8 @@ and could be found here. https://github.com/Hackr-Sach/Mintagram</p>
       <li id='resume-li'><a href='https://github.com/iFrogHop2Worlds'>github.com/iFrogHop2Worlds</a></li>
     </ul>
 
+    <br></br>
+
     <h2>Certifications and Licenses</h2>
     <p id='resume-text'><b>M220JS: MongoDB for JavaScript Developers</b></p>
     <p id='resume-text'><a href='https://university.mongodb.com/course_completion/3ffe1524-40e9-4fc9-90b0-82d0e0b2d99a?
@@ -98,11 +100,8 @@ utm_source=copy&utm_medium=social&utm_campaign=university_social_sharing'>certif
     <p id='resume-text'><a href='https://freecodecamp.org/certification/illbill/javascript-algorithms-and-data-structures'>certificate link</a></p>
     
     <p id='resume-text'><b>Portswigger/Burpsuite cert coming soon</b></p>
-    <p id='resume-text'>Additional Information</p>
-    <p id='resume-text'>Was inspired to code when I learned about ethereum. I dabbled in languages such as c++, java, js,
-python, etc in early years of learning and over time I seemed to write mostly javascript, solidity, c++,
-python and some php. With the majority of my experience being in JavaScript/React. 
-Currently studying and practising ethical hacking to up my security game.</p>   
+    <h3>Additional Information</h3>
+    <p id='resume-text'>I am always trying to learn and advanced my development craft. Currently working towards getting my certificate from portswigger for using burp suite in pen testing and bug hunting. In doing so i am refining my development ability, being more security conscious and expanding on what I can offer in terms of service.</p>   
     <p id='resume-text'></p>
 
 
@@ -125,6 +124,9 @@ Currently studying and practising ethical hacking to up my security game.</p>
     }
     #resume-text {
       font-family: 'Roboto Mono', monospace;
+    }
+    h3 {
+      padding-top: 25px;
     }
   `}</style>
 </div>
