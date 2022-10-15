@@ -30,12 +30,8 @@ export default function Home() {
         <div id='background-home'>
             <div id='content'>
             <h3>Billy Best</h3>
-            <div  className='center-content'>
-            <div id='landing-cta' >  
-                    <p id='headline'> A full stack developer.</p>
-                    <p id='tagline'>Traditional web, web3 and closed systems.</p>    
-                </div>
-            </div>
+            <p id='headline'> A full stack developer.</p>
+            <p id='tagline'>Traditional web, web3 and closed systems.</p>    
             <a href='/services'><button  id='navbtn'>services</button></a> <a href='/contact'><button  id='navbtn'>contact me</button></a>
 
              
