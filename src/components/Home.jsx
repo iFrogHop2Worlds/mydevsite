@@ -176,18 +176,20 @@ export default function Home() {
             }
 
             .alice-carousel__wrapper {  
-                margin-left: 5%;
-              
+                margin-left: 0.2%;              
             }
             .alice-carousel__next-btn-item {  
                padding-right: 99%;
             }
+            li.alice-carousel__stage-item {
+                
+            }
             .item {
                 height: 300px;
-                width: 300px;
+                width: 98%;
                 background-size: cover; 
                 background-position: center;
-                float: middle;         
+                       
             }
             .item_title {
                 color: #00ff6e;
@@ -265,18 +267,7 @@ export default function Home() {
                 padding-left: 10%;
                 padding-right: 10%;
                 }
-                .alice-carousel {
-                    padding-left: 16%;
-                }
-                .alice-carousel__dots {
-                    padding-right: 30%;
-                }
-                .alice-carousel__prev-btn{
-                    padding-right: 30%;
-                }
-                .alice-carousel__next-btn{
-                    padding-right: 30%;
-                }
+
 
             
             }
