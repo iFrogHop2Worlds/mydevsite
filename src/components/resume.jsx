@@ -1,6 +1,8 @@
 import React from 'react'
 
+
 export default function Resume() {
+  
   return (
     <div id='resume-background'>
     <h2>Billy Best</h2>

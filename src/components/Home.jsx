@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+
 
 
 export default function Home() {
@@ -11,17 +13,17 @@ export default function Home() {
         1500: { items: 5 }
     };
     const items = [
-        <div className="item_1 item center-content" data-value="1"><p className='item_title'>The Squid Squad</p></div>,
-        <div className="item_2 item center-content" data-value="2"><p className='item_title'>Mintagram</p></div>,
-        <div className="item_3 item center-content" data-value="3"><p className='item_title'>Common Pool Resource Manager</p></div>,
-        <div className="item_4 item center-content" data-value="4"><p className='item_title'>Banking/Financial Tools</p></div>,
-        <div className="item_5 item center-content" data-value="5"><p className='item_title'>SeaToSky - Wordpress</p></div>,
-        <div className="item_6 item center-content" data-value="6"><p className='item_title'>Coastal Living - Wordpress</p></div>,
-        <div className="item_7 item center-content" data-value="7"><p className='item_title'>Peripheri Digital - Wordpress</p></div>,
-        <div className="item_8 item center-content" data-value="8"><p className='item_title'>Kubo Cannabis - Wordpress</p></div>,
-        <div className="item_9 item center-content" data-value="9"><p className='item_title'>Project CB - a data aggregator</p></div>,
-        <div className="item_10 item center-content" data-value="10"><p className='item_title'>Client Personal Site</p></div>,
-        <div className="item_11 item center-content" data-value="11"><p className='item_title'>E-Signature-Generator-Revamp</p></div>,
+        <Link to={'/product-single'} state={{ from: "squidsquad" }}><div className="item_1 item center-content" data-value="1"><p className='item_title'>The Squid Squad</p></div></Link>,
+        <Link to={'/product-single'} state={{ from: "mintagram" }}><div className="item_2 item center-content" data-value="2"><p className='item_title'>Mintagram</p></div></Link>,
+        <Link to={'/product-single'} state={{ from: "cprmanager" }}><div className="item_3 item center-content" data-value="3"><p className='item_title'>Common Pool Resource Manager</p></div></Link>,
+        <Link to={'/product-single'} state={{ from: "fintech" }}><div className="item_4 item center-content" data-value="4"><p className='item_title'>Banking/Financial Tools</p></div></Link>,
+        <Link to={'/product-single'} state={{ from: "s2s" }}><div className="item_5 item center-content" data-value="5"><p className='item_title'>SeaToSky - Wordpress</p></div></Link>,
+        <Link to={'/product-single'} state={{ from: "coastal-living" }}><div className="item_6 item center-content" data-value="6"><p className='item_title'>Coastal Living - Wordpress</p></div></Link>,
+        <Link to={'/product-single'} state={{ from: "peri-fairy" }}><div className="item_7 item center-content" data-value="7"><p className='item_title'>Peripheri Digital - Wordpress</p></div></Link>,
+        <Link to={'/product-single'} state={{ from: "kubo" }}><div className="item_8 item center-content" data-value="8"><p className='item_title'>Kubo Cannabis - Wordpress</p></div></Link>,
+        <Link to={'/product-single'} state={{ from: "projectcb" }}><div className="item_9 item center-content" data-value="9"><p className='item_title'>Project CB - a data aggregator</p></div></Link>,
+        <Link to={'/product-single'} state={{ from: "chloe" }}><div className="item_10 item center-content" data-value="10"><p className='item_title'>Client Personal Site</p></div></Link>,
+        <Link to={'/product-single'} state={{ from: "shape" }}><div className="item_11 item center-content" data-value="11"><p className='item_title'>E-Signature-Generator-Revamp</p></div></Link>,
       ];
 
 
@@ -44,9 +46,10 @@ export default function Home() {
                     mouseTracking
                     items={items}
                     responsive={responsive}
-                    autoPlayInterval={2500}
+                    autoPlayInterval={3500}
                     autoPlayDirection="ltr"
                     autoPlay={true}
+                    infinite={true}
                     mouseTrackingEnabled={true}
             
                 />
@@ -142,7 +145,7 @@ export default function Home() {
             }
             #about-me-title {
                 padding-top: 125px;
-                width: 150px;
+                width: auto;
                 font-size: 32px;
                 font-family: 'Roboto Mono', monospace;
                 color: white;
@@ -168,7 +171,7 @@ export default function Home() {
 
             #projects-title {
                 padding-top: 125px;
-                width: 150px;
+                width: auto;
                 font-size: 32px;
                 font-family: 'Roboto Mono', monospace;
                 color: white;

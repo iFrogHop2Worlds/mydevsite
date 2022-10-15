@@ -8,6 +8,7 @@ import Resume from './components/resume';
 import Home from './components/Home';
 import Header from './components/header';
 import Footer from './components/footer';
+import ProjectSingle from './components/project-single';
 
 function App() {
   
@@ -20,7 +21,8 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/services' element={<Services />} />
         <Route path='/projects' element={<Demos />} />  
-        <Route path='/resume' element={<Resume />} />     
+        <Route path='/resume' element={<Resume />} /> 
+        <Route path='/product-single' element={<ProjectSingle />} />       
       </Routes>
       <Footer />
       </div>
