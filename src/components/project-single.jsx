@@ -9,14 +9,15 @@ export default function ProjectSingle() {
     const [projectQuery, setProjectQuery] = useState({})
 
 
-    const getReq = async () => {
-        let q =  await axios.get('http://localhost:7500/projects/get', { params: { title: name } })
-        setProjectQuery(q.data[0])
-    }
+
 
     useEffect(() => {
-       getReq();
-      }, []);
+        const getReq = async () => {
+            let q =  await axios.get('http://localhost:7500/projects/get', { params: { title: name } })
+            setProjectQuery(q.data[0])
+        }
+        getReq()
+      }, [name]);
 
   return (
     <>
@@ -26,15 +27,25 @@ export default function ProjectSingle() {
                      
              {/* <image src={projectContents.image}></image> */}
 
-             <p>{projectQuery.description}</p>
+             <p>{projectQuery.description ? projectQuery.description : "No description available"}</p>
 
-             <a href={projectQuery.repository}>REPO LINK</a>
+      
+            <a href={projectQuery.repository}>{projectQuery.repository? projectQuery.repository: 'No repository'}</a>
 
              <br></br><br></br>
 
-             <p>preview</p>
+            
         </div>
+        { projectQuery.demo != "none"  &&   
+            <>
+            <p>Demo</p>     
             <iframe id='preview-frame' title='preview' src={projectQuery.demo} width="1200" height="500"></iframe>
+            </>
+        } 
+        { projectQuery.demo === "none"  &&   
+            <p>demo comming soon</p>       
+        } 
+       
         </div>
 
     <style>{`
