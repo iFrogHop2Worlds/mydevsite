@@ -9,6 +9,7 @@ import Home from './components/Home';
 import Header from './components/header';
 import Footer from './components/footer';
 import ProjectSingle from './components/project-single';
+import Dashboard from './components/dashboard';
 
 function App() {
   
@@ -22,7 +23,8 @@ function App() {
         <Route path='/services' element={<Services />} />
         <Route path='/projects' element={<Demos />} />  
         <Route path='/resume' element={<Resume />} /> 
-        <Route path='/product-single' element={<ProjectSingle />} />       
+        <Route path='/product-single' element={<ProjectSingle />} />    
+        <Route path='/dashboard' element={<Dashboard />} />      
       </Routes>
       <Footer />
       </div>

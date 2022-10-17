@@ -1,12 +1,11 @@
-const app = require("./server");
+require('dotenv').config()
+const app = require("./src/server");
 const { MongoClient } = require("mongodb");
 const port = process.env.PORT || 8181;
-
-// let GlamourCrawler = require("./services/glamour_crawler/m");
-// let AllureCrawler = require('./services/allure_crawler/m')
+const ProjectDataDAO = require('./src/dao/projectDataDAO')
  
 MongoClient.connect(
-        process.env.MDECK_DB_URI,
+        process.env.DEVSITE_DB_URI,
         {
             maxPoolSize: 100, 
             useNewUrlParser: true, 
@@ -21,8 +20,7 @@ MongoClient.connect(
     })
     .then(async client => {
 
-        // await BeautyDAO.injectDB(client);
-
+        await ProjectDataDAO.injectDB(client);
 
         app.listen(port, () => {
             console.log(`Server is running on port: ${port}`);

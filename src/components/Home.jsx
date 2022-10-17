@@ -80,7 +80,7 @@ export default function Home() {
         </div>
         
         <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto+Mono:wght@100&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto+Mono:wght@100&display=swap');
             #background-home {
                 width: auto;
                 height: auto;
