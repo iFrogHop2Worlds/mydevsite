@@ -1,56 +1,40 @@
-import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 export default function ProjectSingle() {
 
     const location = useLocation()
     const { name } = location.state
+    const [projectQuery, setProjectQuery] = useState({})
 
-    const projectObj = [
-        {        
-            image: "img url",
-            text: "this is a description... dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley ",
-            repo: "http://repo",
-            preview: "http://thesquidsquadnft.art"
-        },
 
-    ]
+    const getReq = async () => {
+        let q =  await axios.get('http://localhost:7500/projects/get', { params: { title: name } })
+        setProjectQuery(q.data[0])
+    }
 
-    /**
-     * I think I will make a get request to mongodb to get which ever post 
-     * link state specifies. The response from this request will replace the dummy post object above
-     */
+    useEffect(() => {
+       getReq();
+      }, []);
 
   return (
     <>
         <div id='background' className='name'>
-    
+        <div id='preview-header'>
+            <h2>{name}</h2>
+                     
+             {/* <image src={projectContents.image}></image> */}
 
-        {projectObj.map(projectContents => {
- 
-            return (
-                <>             
-                    <div id='preview-header'>
-                        <h2>{name}</h2>
-                        
-                        <image src={projectContents.image}></image>
+             <p>{projectQuery.description}</p>
 
-                        <p>{projectContents.text}</p>
+             <a href={projectQuery.repository}>REPO LINK</a>
 
-                        <a href={projectContents.repo}>REPO LINK</a>
+             <br></br><br></br>
 
-                        <br></br><br></br>
-
-                        <p>preview</p>
-                    </div>
-
-                  
-                    <iframe id='preview-frame' title='preview' src={projectContents.preview} width="1200" height="500"></iframe>
-            
-                            
-                </>  
-            ); 
-        })} 
+             <p>preview</p>
+        </div>
+            <iframe id='preview-frame' title='preview' src={projectQuery.demo} width="1200" height="500"></iframe>
         </div>
 
     <style>{`

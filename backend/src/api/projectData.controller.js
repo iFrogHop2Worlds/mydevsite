@@ -3,29 +3,27 @@ const projectDataDAO = require("../dao/projectDataDAO");
 class ProjectDataController {
 
     static async apiGetProject(req, res, next) {
-        let result
+        let ProjectQuery
+  
+        req ? ProjectQuery=req : console.log("Data did not persist properly")
         try {
-            result = await projectDataDAO.getProject()
-            res.json(result)
+            ProjectQuery = await projectDataDAO.getProject(ProjectQuery)
+            res.json(ProjectQuery)
         } catch (err) {
             res.status(500).json({error: err});
         }
-    }   apiGetAllAllureArticles
-
- 
+    } 
 
     static async apiAddProject(req, res, next) {
-        let result 
-        console.log(req.body)
-        req ? result=req : console.log("Data did not persist properly")
+        let Project 
+        req ? Project=req : console.log("Data did not persist properly")
         try {
-            await projectDataDAO.addProject(result.body); 
+            await projectDataDAO.addProject(Project.body); 
         } catch (err) {
             console.log(err);
         }
     } 
 
- 
     static async apiUpdateProject(req, res, next) {
         try {
             await projectDataDAO.updateProject(req)

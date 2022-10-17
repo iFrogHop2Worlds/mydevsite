@@ -20,10 +20,10 @@ class ProjectDataDAO {
     static async getProject(project) {
         try {
             let q = await Projects
-            .find({title: "Mintagram"})
+            .find({title: project.query.title})
             .project({})
             .toArray();
-            console.log(q)
+         
             return q
         } catch (err) {
             console.log(err);
