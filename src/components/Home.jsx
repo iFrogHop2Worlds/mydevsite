@@ -32,7 +32,7 @@ export default function Home() {
         <>
         <div id='background-home'>
             <div id='content'>
-            <h3>Billy Best</h3>
+            <h3 id='home-title'>Billy Best</h3>
             <p id='headline'> A full stack developer.</p>
             <p id='tagline'>Traditional web, web3 and closed systems.</p>    
             <a href='/services'><button  id='navbtn'>services</button></a> <a href='/contact'><button  id='navbtn'>contact me</button></a>
@@ -130,7 +130,7 @@ export default function Home() {
                 font-family: 'Roboto Mono', monospace;
             }
 
-            h3 {
+            #home-title {
                 font-size: 92px;
                 font-family: 'Roboto Mono', monospace;
                 color: white;

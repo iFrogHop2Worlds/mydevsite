@@ -13,12 +13,12 @@ export default function Footer() {
             </div>
 
             <div className='footer-col' id='affiliates'>
-            <h3>Affiliates</h3>
+            <h5 id='footer-title'>Affiliates</h5>
             <p> Maasdao</p>
             </div>
 
             <div className='footer-col' id='socials'>
-                <h3>Socials</h3>
+                <h5 id='footer-title'>Socials</h5>
                 <ul id='footer-ul'>
                     <li id='footer-li' ><a href='https://github.com/'>Github</a></li>
                     <li id='footer-li'><a>Email</a></li>
@@ -54,9 +54,14 @@ export default function Footer() {
             display: table;
             clear: both;
             }
+
             #footer-ul {
                 list-style: none;
             }
+            #footer-title {
+                font-size: 21px;
+            }
+
 
         `}</style>
     </div>
