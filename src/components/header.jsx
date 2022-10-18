@@ -50,7 +50,7 @@ const Header = () => {
           color: white;
           font-size: 16px;
           opacity: 0.8;
-          border: 1px solid #00ff6e;
+          border: 1px solid #ff8000;
           width: 100px;
           
         }
@@ -58,6 +58,8 @@ const Header = () => {
 
         #header-background {
           background-color: black;
+          background-image: url("https://as2.ftcdn.net/v2/jpg/01/21/94/09/1000_F_121940968_O9M6zOz1EZAOQuzGTfn8aYBbhaIAVNjj.jpg");
+          bCkground-size: 10%, 10%;
           position: fixed;
           top: 0;
           width: 100%;

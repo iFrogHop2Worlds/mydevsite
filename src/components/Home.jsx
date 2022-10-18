@@ -17,15 +17,15 @@ export default function Home() {
     const items = [
         <Link to={'/product-single'} state={{ name: "The Squid Squad" }}><div className="item_1 item center-content" data-value="1"><p className='item_title'>The Squid Squad</p></div></Link>,
         <Link to={'/product-single'} state={{ name: "Mintagram" }}><div className="item_2 item center-content" data-value="2"><p className='item_title'>Mintagram</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "CPR Manager" }}><div className="item_3 item center-content" data-value="3"><p className='item_title'>Common Pool Resource Manager</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "CPR Manager" }}><div className="item_3 item center-content" data-value="3"><p className='item_title'>CPR Deploy/Manage</p></div></Link>,
         <Link to={'/product-single'} state={{ name: "Finance Tools" }}><div className="item_4 item center-content" data-value="4"><p className='item_title'>Banking/Financial Tools</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Sea2Sky" }}><div className="item_5 item center-content" data-value="5"><p className='item_title'>SeaToSky - Wordpress</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Coastal Living" }}><div className="item_6 item center-content" data-value="6"><p className='item_title'>Coastal Living - Wordpress</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Periphery Digital" }}><div className="item_7 item center-content" data-value="7"><p className='item_title'>Peripheri Digital - Wordpress</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Kubo Cannabis" }}><div className="item_8 item center-content" data-value="8"><p className='item_title'>Kubo Cannabis - Wordpress</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Project cb" }}><div className="item_9 item center-content" data-value="9"><p className='item_title'>Project CB - a data aggregator</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Sea2Sky" }}><div className="item_5 item center-content" data-value="5"><p className='item_title'>SeaToSky</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Coastal Living" }}><div className="item_6 item center-content" data-value="6"><p className='item_title'>Coastal Living</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Periphery Digital" }}><div className="item_7 item center-content" data-value="7"><p className='item_title'>Peripheri Digital</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Kubo Cannabis" }}><div className="item_8 item center-content" data-value="8"><p className='item_title'>Kubo Cannabis</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "Project cb" }}><div className="item_9 item center-content" data-value="9"><p className='item_title'>Project CB</p></div></Link>,
         <Link to={'/product-single'} state={{ name: "Chloe" }}><div className="item_10 item center-content" data-value="10"><p className='item_title'>Client Personal Site</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "E-Sig-Generator" }}><div className="item_11 item center-content" data-value="11"><p className='item_title'>E-Signature-Generator-Revamp</p></div></Link>,
+        <Link to={'/product-single'} state={{ name: "E-Sig-Generator" }}><div className="item_11 item center-content" data-value="11"><p className='item_title'>E-Signature-Generator</p></div></Link>,
       ];
 
     return (
@@ -192,17 +192,22 @@ export default function Home() {
             .item {
                 height: 300px;
                 width: 98%;
-                background-size: cover; 
-                background-position: center;
-                       
+               
+                background-size: cover;   
+               
+            
             }
             .item_title {
                 color: #00ff6e;
+                background-color: black;
                 text-shadow: -1px -1px 0 #000000, 2px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
                 font-size: 20px;
                 position: absolute;
                 bottom: 0;
                 text-align: center;
+                width: 80%;
+                border: 1px solid #ff8000;
+              
             }
             .item_1 {
                 background-image: url('https://images2.imgbox.com/23/db/SDnbJzVB_o.png');
