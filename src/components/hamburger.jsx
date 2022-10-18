@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import history from '../utils/history'
 
 const Hamburger = () => {
     const [showBurger, setShowBurger] = useState(false)
@@ -11,11 +12,33 @@ const Hamburger = () => {
         <>
             <div className='navigation'>
                 <ul>
-                    <li>Home</li>
-                    <li>About me</li>
-                    <li>Work</li>
-                    <li>Github</li>
-                    <li>Resume</li>
+                    <li>
+                        <a href='http://billsdev.space/#'>
+                            <button id='navbtn' color='primary' size='sm' onClick={() => { history.push('/');}}>
+                                Home
+                            </button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='http://billsdev.space/#about-me'>
+                            <button id='navbtn' color='primary' size='sm'>About me</button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='http://billsdev.space/#projects'>
+                            <button id='navbtn' color='primary' size='sm'>Work</button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/iFrogHop2Worlds" target="_blank" rel="noopener noreferrer">
+                            <button id='navbtn' color='warning' size='sm' >Github</button>
+                        </a>
+                    </li>
+                    <li>
+                    <button id='navbtn' color='primary' size='sm' onClick={() => {history.push('/resume'); window.location.reload(); }}>
+                        Resume
+                    </button>
+                    </li>
                 </ul>
             </div>
             <div className='hamburger' onClick={toggleBurger}>
@@ -62,7 +85,7 @@ const Hamburger = () => {
             border: 1px solid #00ff6e;
             color: white;
             height: 150px;
-            width: 20%;
+            width: 120px;
             margin-top: 38px;
             margin-left: -35px;
             padding-top: 10px;
