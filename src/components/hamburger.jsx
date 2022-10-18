@@ -13,19 +13,19 @@ const Hamburger = () => {
             <div className='navigation'>
                 <ul>
                     <li>
-                        <a href='http://billsdev.space/#'>
+                        <a href='http://localhost:3000/#'>
                             <button id='navbtn' color='primary' size='sm' onClick={() => { history.push('/');}}>
                                 Home
                             </button>
                         </a>
                     </li>
                     <li>
-                        <a href='http://billsdev.space/#about-me'>
+                        <a href='http://localhost:3000/#about-me'>
                             <button id='navbtn' color='primary' size='sm'>About me</button>
                         </a>
                     </li>
                     <li>
-                        <a href='http://billsdev.space/#projects'>
+                        <a href='http://localhost:3000/#projects'>
                             <button id='navbtn' color='primary' size='sm'>Work</button>
                         </a>
                     </li>

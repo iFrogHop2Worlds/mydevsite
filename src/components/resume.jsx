@@ -131,6 +131,14 @@ utm_source=copy&utm_medium=social&utm_campaign=university_social_sharing'>certif
     h3 {
       padding-top: 25px;
     }
+
+    @media only screen and (max-width: 800px) {
+
+      #resume-background {
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+        }
   `}</style>
 </div>
   )
