@@ -10,17 +10,17 @@ const Header = () => {
       <div class="topnav" id='header-background' >
    
         <div className='navigation' id='myLinks'>  
-              <a href='http://localhost:3000/#'>
+              <a href='http://billsdev.space/#'>
               <button id='navbtn' color='primary' size='sm' onClick={() => { history.push('/');}}>
                   Home
               </button>
               </a>
 
-              <a href='http://localhost:3000/#about-me'>
+              <a href='http://billsdev.space/#about-me'>
                 <button id='navbtn' color='primary' size='sm'>About me</button>
               </a>
 
-              <a href='http://localhost:3000/#projects'>
+              <a href='http://billsdev.space/#projects'>
                 <button id='navbtn' color='primary' size='sm'>Work</button>
               </a>
               <a href="https://github.com/iFrogHop2Worlds" target="_blank" rel="noopener noreferrer">
