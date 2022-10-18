@@ -41,7 +41,7 @@ const Hamburger = () => {
                     </li>
                 </ul>
             </div>
-            <div className='hamburger' onClick={toggleBurger}>
+            <div className='hamburger' onClick={toggleBurger}   >
                 <div className='burger burger1'></div>
                 <div className='burger burger2'></div>
                 <div className='burger burger3'></div>

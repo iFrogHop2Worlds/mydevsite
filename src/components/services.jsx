@@ -7,7 +7,7 @@ export default function Services() {
     <div id='service-header-text'>
     <p>Traditional web and web3/blockchain services. Whether you want to build a new application, upgrade your existing one, utilize the blockchain or have your apps, dApps and smart contracts audited. I got you covered!</p>
     <div id='service-cta'>
-      <a href='/services'><button  id='navbtn'>Book now</button></a> <a href='/contact'><button  id='navbtn'>inquire form</button></a>
+      <a href='/services'><button  id='navbtn'>Book now</button></a> <a href='/contact'><button  id='navbtn'>Inquire</button></a>
     </div>
     </div>
 
@@ -41,7 +41,9 @@ export default function Services() {
           height: auto;
           background-color: #1e282e;
           color: #ffffff;
-          padding-top: 120px;  
+          padding-top: 120px; 
+          padding-left: 3%;
+          padding-right: 3%; 
           font-family: 'Poppins', sans-serif;
 
         }
@@ -58,7 +60,7 @@ export default function Services() {
 
         }
         .row {
-         
+          width: 100%;
         }
 
         /* Clear floats after the columns */
@@ -86,6 +88,31 @@ export default function Services() {
           padding-top: 100px;  
           font-family: 'Poppins', sans-serif;
         }
+
+        @media only screen and (max-width: 1380px) {
+         .column {
+            float: none;
+
+          } 
+
+        }
+        @media only screen and (max-width: 800px) {
+         .column {
+            
+          } 
+
+          #background { 
+          padding-left: 0.1%;
+          padding-right: 0.1%; 
+   
+
+        }
+        .center-content {
+          
+        }
+
+        }
+
 
        
       `}</style>

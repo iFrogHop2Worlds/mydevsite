@@ -3,43 +3,61 @@ import React from 'react'
 export default function Footer() {
   return (
     <div>
-        <div id='footer'>
-            <ul id='footer-ul'>
-                <li id='footer-li'>testimonials
-                    <p> </p>
-                    <li id='footer-li'>Person1: easy to work with, quality work...</li>
-                </li>
-                <li id='footer-li'>Affiliates
-                    <p> </p>
-                    <li id='footer-li'>maasdao</li>
-                </li>
-                <li id='footer-li'>socials
-                    <p> </p>
-                    <li id='footer-li'>github</li>
-                    <li id='footer-li'>email</li>
-                    <li id='footer-li'>twitter</li>
-                </li>
-            </ul>
+        <div className='footer-row' id='footer'>
+
+            <div className='footer-col' id='testimonials'>
+                <p> Testimonial 1: dummy text.....</p>
+            </div>
+            <div className='footer-col' id='space'>
+
+            </div>
+
+            <div className='footer-col' id='affiliates'>
+            <h3>Affiliates</h3>
+            <p> Maasdao</p>
+            </div>
+
+            <div className='footer-col' id='socials'>
+                <h3>Socials</h3>
+                <ul id='footer-ul'>
+                    <li id='footer-li' ><a href='https://github.com/'>Github</a></li>
+                    <li id='footer-li'><a>Email</a></li>
+                    <li id='footer-li'><a>Youtube</a></li>
+                </ul>
+                
+                
+                
+            </div>
+
         </div> 
         <style>{`
             #footer {
                 background-color: #000000;
-                height: 300px;
+                height: auto;
                 width: 100%;  
                 color: #faffff;
                 padding-top:20px; 
             }
+            .footer-col {
+                float: left;
+                width: 300px;
+                padding: 10px;
+                text-align: right;
+            }
+            .footer-row {
+            width: 100%;
+            }
+
+            /* Clear floats after the columns */
+            .footer-row:after {
+            content: "";
+            display: table;
+            clear: both;
+            }
             #footer-ul {
-                display: flex;
                 list-style: none;
-                padding-top: 21px;
             }
-           #footer-li {
-                width: 330px;
-                line-height: 12px;
-                padding-right: 6%;
-                padding-left: 6%;
-            }
+
         `}</style>
     </div>
     

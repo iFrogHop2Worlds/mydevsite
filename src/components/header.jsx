@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <>
 
-      <div class="topnav" id='header-background'>
+      <div class="topnav" id='header-background' >
    
         <div className='navigation' id='myLinks'>  
               <a href='http://billsdev.space/#'>
