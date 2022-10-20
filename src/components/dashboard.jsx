@@ -44,7 +44,7 @@ const Dashboard = () => {
 
     const _handleSubmmit = event => {
         event.preventDefault();
-        axios.post(`http://localhost:7500/projects/post`, { 
+        axios.post(`http://138.197.151.61:7500/projects/post`, { 
             title: proTitle,
             description: proDesc,
             repository: proRepo,
@@ -98,10 +98,18 @@ const Dashboard = () => {
         }    
     }
 
+    const logOut = () => {
+        AuthService.logout();
+        setMode(false);
+        setShowProject(false);
+        setShowArticle(false);
+        setCurrentUser(undefined);
+      }
+
     return (
         <>
             <div id='background'>
-            <h2>Admin Panel</h2>
+            <h2>Admin Panel</h2> 
             <button className='btn-animate btn-admin btn' onClick={_toggleMode}>toggle mode</button> 
             { mode === false &&
                 <>
@@ -117,42 +125,52 @@ const Dashboard = () => {
             }  
           
 
-            {(currentUser === null) ? <p>error</p>:
-                (currentUser.username === process.env.REACT_APP_ADMIN) ?
-                <div id="add-content" hidden={mode}>
-                    <div hidden={showProject} id="project-container">
-                        <form id='projects-form'>
-                            <label for="title">Project name:</label><br/>
-                            <input className='form-field' type="text" id="title" name="title" value={proTitle} onChange={_handleInputsChange}/><br/>
+            {(currentUser === null) ? 
+                <>
+                    <p>Not logged in as admin</p>
+                    <a href="/login"><button id="login">Login</button></a>
+                </>:
+            
+                (currentUser.username === process.env.REACT_APP_ADMIN) ?  
+                <><a href="/login"><button id="logout" onClick={logOut}>Logout</button></a>
+                    <div id="add-content" hidden={mode}>
+                        <div hidden={showProject} id="project-container">
+                            <form id='projects-form'>
+                                 <label for="title">Project name:</label><br />
+                                 <input className='form-field' type="text" id="title" name="title" value={proTitle} onChange={_handleInputsChange} /><br />
 
-                            <label for="desc">Enter a description:</label><br/>
-                            <textarea  type="text" id="desc" name="desc" value={proDesc} onChange={_handleInputsChange}/><br/>
+                                 <label for="desc">Enter a description:</label><br />
+                                 <textarea type="text" id="desc" name="desc" value={proDesc} onChange={_handleInputsChange} /><br />
 
-                            <label for="repo-link">Code repository link:</label><br/>
-                            <input className='form-field' type="text" id="repo-link" name="repo-link" value={proRepo} onChange={_handleInputsChange}/><br/>
+                                 <label for="repo-link">Code repository link:</label><br />
+                                 <input className='form-field' type="text" id="repo-link" name="repo-link" value={proRepo} onChange={_handleInputsChange} /><br />
 
-                            <label for="preview-link">Preview link:</label><br/>
-                            <input className='form-field' type="text" id="preview-link" name="preview-link" value={proDemo}  onChange={_handleInputsChange}/><br/>
+                                 <label for="preview-link">Preview link:</label><br />
+                                 <input className='form-field' type="text" id="preview-link" name="preview-link" value={proDemo} onChange={_handleInputsChange} /><br />
 
-                            <br/>
-                            <button onClick={_handleSubmmit}>Submit</button>
-                        </form> 
-                    </div>
+                                 <br />
+                                 <button onClick={_handleSubmmit}>Submit</button>
+                             </form>
+                         </div>
 
-                    <div hidden={showArticle} id="article-container">
-                        <form id='articles-form'>
-                            <label for="title">Article title:</label><br/>
-                            <input className='form-field' type="text" id="title" name="title" value={proTitle} onChange={_handleInputsChange}/><br/>
+                        <div hidden={showArticle} id="article-container">
+                            <form id='articles-form'>
+                                  <label for="title">Article title:</label><br />
+                                 <input className='form-field' type="text" id="title" name="title" value={proTitle} onChange={_handleInputsChange} /><br />
 
-                            <label for="content">content:</label><br/>
-                            <textarea  type="text" id="content" name="content" value={proDesc} onChange={_handleInputsChange}/><br/>
+                                 <label for="content">content:</label><br />
+                                  <textarea type="text" id="content" name="content" value={proDesc} onChange={_handleInputsChange} /><br />
 
-                            <br/>
-                            <button onClick={_handleSubmmit}>Submit</button>
-                        </form> 
-                    </div>
-                    
-                </div>: <p>Not logged in as admin</p>}
+                                <br />
+                                 <button onClick={_handleSubmmit}>Submit</button>
+                             </form>
+                        </div>
+
+                    </div></>: 
+                <>
+                    <p>Not logged in as admin</p>
+                    <a href="/login"><button id="login">Login</button></a>
+            </>}
             </div>
             
 
@@ -166,8 +184,19 @@ const Dashboard = () => {
                     padding-top: 20px;
 
                 }
+                #logout { 
+                    float: right;
+                    margin-right: 5px;
+                    margin-top: -52px;
+                }
+                #login{
+                    float: right;
+                    margin-right: 5px;
+                    margin-top: -136px;
+                }
                 .btn-admin {
                     margin: 5px;
+                   
                 }
                 form {
                     padding-top: 50px;

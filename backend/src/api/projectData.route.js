@@ -5,6 +5,7 @@ const router = new Router();
 
 router.route("/post").post(ProjectDataController.apiAddProject)
 router.route("/get").get(ProjectDataController.apiGetProject)
+router.route("/all").get(ProjectDataController.apiGetAllProjects)
 router.route("/update").put(ProjectDataController.apiUpdateProject)
 router.route("/delete").delete(ProjectDataController.apiDeleteProject)
 

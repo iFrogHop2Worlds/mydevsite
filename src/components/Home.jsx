@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
 
 
 export default function Home() {
+    const [items,  setItems] = useState([]);
+    const [projectQuery, setProjectQuery] = useState([{}]);
 
     const responsive = {
         400: { items: 1 },
@@ -13,29 +16,38 @@ export default function Home() {
         1024: { items: 3 },
         1500: { items: 5 }
     };
+    const getReq = async () => {
+        let q =  await axios.get('http://localhost:7500/projects/all');
+        const constructItem = (_name, _dataValue) => {
+            items.push(
+                <Link to={'/product-single'} state={{ name: `${_name}` }}><div className={"item_"+_dataValue +" item center-content"} data-value={_dataValue}><p className='item_title'>{_name}</p></div></Link>
+            );
+            setItems(items);
+        }
 
-    const items = [
-        <Link to={'/product-single'} state={{ name: "The Squid Squad" }}><div className="item_1 item center-content" data-value="1"><p className='item_title'>The Squid Squad</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Mintagram" }}><div className="item_2 item center-content" data-value="2"><p className='item_title'>Mintagram</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "CPR Manager" }}><div className="item_3 item center-content" data-value="3"><p className='item_title'>CPR Deploy/Manage</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Finance Tools" }}><div className="item_4 item center-content" data-value="4"><p className='item_title'>Banking/Financial Tools</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Sea2Sky" }}><div className="item_5 item center-content" data-value="5"><p className='item_title'>SeaToSky</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Coastal Living" }}><div className="item_6 item center-content" data-value="6"><p className='item_title'>Coastal Living</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Periphery Digital" }}><div className="item_7 item center-content" data-value="7"><p className='item_title'>Peripheri Digital</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Kubo Cannabis" }}><div className="item_8 item center-content" data-value="8"><p className='item_title'>Kubo Cannabis</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Project cb" }}><div className="item_9 item center-content" data-value="9"><p className='item_title'>Project CB</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "Chloe" }}><div className="item_10 item center-content" data-value="10"><p className='item_title'>Client Personal Site</p></div></Link>,
-        <Link to={'/product-single'} state={{ name: "E-Sig-Generator" }}><div className="item_11 item center-content" data-value="11"><p className='item_title'>E-Signature-Generator</p></div></Link>,
-      ];
+        if(items.length < q.data.length-1)
+        for(let i = 0; i < q.data.length; i++){  
+            setItems([]);
+            constructItem(q.data[i].title, i+1);         
+            console.log(items)
+        }
+        setProjectQuery(q.data)
+    }
+
+    useEffect(() => {
+        getReq() 
+    }, []);
+ 
 
     return (
         <>
         <div id='background-home'>
             <div id='content'>
-            <h3 id='home-title'>Billy Best</h3>
-            <p id='headline'> A full stack developer.</p>
-            <p id='tagline'>Traditional web, web3 and closed systems.</p>    
-            <a href='/services'><button  id='navbtn'>services</button></a> <a href='/contact'><button  id='navbtn'>contact me</button></a>
+                {/* <button onClick={constructItem}>test</button> */}
+                <h3 id='home-title'>Billy Best</h3>
+                <p id='headline'> A full stack developer.</p>
+                <p id='tagline'>Traditional web, web3 and closed systems.</p>    
+                <a href='/services'><button  id='navbtn'>services</button></a> <a href='/contact'><button  id='navbtn'>contact me</button></a>
 
              
                 <div id='projects' className='center-content'>

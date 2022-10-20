@@ -12,7 +12,19 @@ class ProjectDataController {
         } catch (err) {
             res.status(500).json({error: err});
         }
-    } 
+    }  
+
+    static async apiGetAllProjects(req, res, next) {
+        let ProjectQuery
+  
+        req ? ProjectQuery=req : console.log("Data did not persist properly")
+        try {
+            ProjectQuery = await projectDataDAO.getAllProjects()
+            res.json(ProjectQuery)
+        } catch (err) {
+            res.status(500).json({error: err});
+        }
+    }
 
     static async apiAddProject(req, res, next) {
         let Project 

@@ -29,6 +29,19 @@ class ProjectDataDAO {
             console.log(err);
         }
     }   
+
+    static async getAllProjects() {
+        try {
+            let q = await Projects
+            .find({})
+            .project({})
+            .toArray();
+         
+            return q
+        } catch (err) {
+            console.log(err);
+        }
+    }   
    
     static async addProject(project) {
         try {

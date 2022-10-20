@@ -8,12 +8,9 @@ export default function ProjectSingle() {
     const { name } = location.state
     const [projectQuery, setProjectQuery] = useState({})
 
-
-
-
     useEffect(() => {
         const getReq = async () => {
-            let q =  await axios.get('http://localhost:7500/projects/get', { params: { title: name } })
+            let q =  await axios.get('http://138.197.151.61:7500/projects/get', { params: { title: name } })
             setProjectQuery(q.data[0])
         }
         getReq()
