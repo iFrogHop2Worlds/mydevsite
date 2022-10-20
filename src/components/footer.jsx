@@ -33,7 +33,7 @@ export default function Footer() {
         <style>{`
             #footer {
                 background-color: #000000;
-                height: auto;
+                height: 900px;
                 width: 100%;  
                 color: #faffff;
                 padding-top:20px; 

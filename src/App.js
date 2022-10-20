@@ -28,7 +28,7 @@ function App() {
         <Route path='/product-single' element={<ProjectSingle />} />    
         <Route path='/dashboard' element={<Dashboard />} />  
         <Route path='/login' element={<Login />} />    
-        <Route path='/register' element={<Register />} /> 
+        {/* <Route path='/register' element={<Register />} />  */}
         <Route path='/profile' element={<Profile />} /> 
       </Routes>
       <Footer />
