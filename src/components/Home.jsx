@@ -18,9 +18,10 @@ export default function Home() {
     };
     const getReq = async () => {
         let q =  await axios.get('http://localhost:7500/projects/all');
-        const constructItem = (_name, _dataValue) => {
+        const constructItem = (_name, i) => {
+            let _dataValue = i + 1;
             items.push(
-                <Link to={'/product-single'} state={{ name: `${_name}` }}><div className={"item_"+_dataValue +" item center-content"} data-value={_dataValue}><p className='item_title'>{_name}</p></div></Link>
+                <Link to={'/product-single'} state={{ name: `${_name}` }}><div className={"item_"+ _dataValue +" item center-content"} data-value={_dataValue}><p className='item_title'>{_name}</p></div></Link>
             );
             setItems(items);
         }
@@ -28,7 +29,7 @@ export default function Home() {
         if(items.length < q.data.length-1)
         for(let i = 0; i < q.data.length; i++){  
             setItems([]);
-            constructItem(q.data[i].title, i+1);         
+            constructItem(q.data[i].title, i);         
             console.log(items)
         }
         setProjectQuery(q.data)
@@ -222,20 +223,23 @@ export default function Home() {
               
             }
             .item_1 {
-                background-image: url('https://images2.imgbox.com/23/db/SDnbJzVB_o.png');
-            }
-            .item_2 {
                 background-image: url('https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_thumbnail_photos/001/871/600/datas/medium.png');
             }
-            .item_3 {
-                background-image: url('https://blogs.lse.ac.uk/lsereviewofbooks/files/2012/06/ElinorOstrom.jpg');
+            .item_2 {
+                background-image: url('https://images2.imgbox.com/23/db/SDnbJzVB_o.png');
+                
             }
-            .item_4 {
+            .item_3 {
                 background-image: url('https://i.pinimg.com/736x/3e/3c/3b/3e3c3bc6edec72b47fd03d562d455b13.jpg');
+                }
+            .item_4 {
+                background-image: url('https://images2.imgbox.com/b6/8f/Wot37ur8_o.png');     
             }
             .item_5 {
-                background-image: url('https://images2.imgbox.com/b6/8f/Wot37ur8_o.png');
+                background-image: url('https://blogs.lse.ac.uk/lsereviewofbooks/files/2012/06/ElinorOstrom.jpg');      
             }
+               
+                
             .item_6 {
                 background-image: url('https://images2.imgbox.com/49/9e/HEcDI9Wf_o.png');
             }
