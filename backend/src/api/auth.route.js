@@ -1,14 +1,14 @@
 const { Router } = require("express");
 const { verifySignUp } = require("../middleware");
-const authDataController = require("./auth.controller.js");
+const auth = require("./auth.controller.js");
 
 const router = new Router();
 
-router.route("/sign-up").post([
+router.route("/signup").post([
     verifySignUp.checkDuplicateUserOrEmail,
     verifySignUp.checkRolesExisted
-], authDataController.apiSignUp);
+], auth.apiSignUp);
 
-router.route("/sign-in").post(authDataController.apiSignIn);
+router.route("/signin").post(auth.apiSignIn);
 
 module.exports = router;

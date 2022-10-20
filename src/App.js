@@ -1,5 +1,4 @@
 import './App.css';
-import Layout from './components/layout';
 import {Routes, Route} from 'react-router-dom';
 import Contact from './components/contact';
 import Services from './components/services';
@@ -10,6 +9,9 @@ import Header from './components/header';
 import Footer from './components/footer';
 import ProjectSingle from './components/project-single';
 import Dashboard from './components/dashboard';
+import Login from './components/auth/login';
+import Register from './components/auth/register';
+import Profile from './components/auth/profile';
 
 function App() {
   
@@ -24,7 +26,10 @@ function App() {
         <Route path='/projects' element={<Demos />} />  
         <Route path='/resume' element={<Resume />} /> 
         <Route path='/product-single' element={<ProjectSingle />} />    
-        <Route path='/dashboard' element={<Dashboard />} />      
+        <Route path='/dashboard' element={<Dashboard />} />  
+        <Route path='/login' element={<Login />} />    
+        <Route path='/register' element={<Register />} /> 
+        <Route path='/profile' element={<Profile />} /> 
       </Routes>
       <Footer />
       </div>

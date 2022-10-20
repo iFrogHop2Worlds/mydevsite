@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import AuthService from "../utils/auth.service";
 import axios from 'axios';
 
 
@@ -8,6 +10,23 @@ const Dashboard = () => {
     const [proDesc, setProDesc] = useState("");
     const [proRepo, setProRepo] = useState("");
     const [proDemo, setProDemo] = useState("");
+    const [redirect, setRedirect] = useState(null);
+    const [userReady, setUserReady] = useState(false);
+    const [currentUser, setCurrentUser] = useState({username: ""})
+    
+    useEffect(() => {
+      console.log("hi")
+      let user = AuthService.getCurrentUser()
+      setCurrentUser(user);
+      if (!currentUser) setRedirect({ redirect: "/" });
+      if(currentUser) setUserReady(true);
+      
+    }, []);
+  
+      if (redirect) {
+        return <Navigate to={redirect} />
+      }
+      console.log(currentUser)
 
     const _handleInputsChange = event => {
         const target = event.target;
@@ -46,6 +65,8 @@ const Dashboard = () => {
     return (
         <>
             <div id='background'>
+            {(currentUser.username === "3xDG@nimda") ?
+            <div>
                 <form id='projects-form'>
                     <label for="title">Project name:</label><br/>
                     <input className='form-field' type="text" id="title" name="title" value={proTitle} onChange={_handleInputsChange}/><br/>
@@ -62,6 +83,7 @@ const Dashboard = () => {
                     <br/>
                     <button onClick={_handleSubmmit}>Submit</button>
                 </form> 
+            </div>: <p>Not logged in as admin</p>}
             </div>
             
 
