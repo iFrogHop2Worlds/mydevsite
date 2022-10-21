@@ -53,12 +53,20 @@ class ProjectDataDAO {
     }
     }
   
-    static async updateProject(updates) {
+    static async updateProject(req) {
         try {
-            await Projects.update(
-                {},
-                {$set: {currency: updates}}, //just testing
-            )
+            await Projects.updateOne(
+                { "title" : req.title },
+                { $set: { "description" : req.description?req.description:"none" } }
+            ); 
+            await Projects.updateOne(
+                { "title" : req.title },
+                { $set: { "repository" : req.repository?req.repository:"none" } }   
+            ); 
+            await Projects.updateOne(
+                { "title" : req.title },
+                { $set: { "demo" : req.demo?req.demo:"none" } }  
+            ); 
         } catch (err) {
            console.log(err)
         }
@@ -71,8 +79,6 @@ class ProjectDataDAO {
             res.json({message: "still working on it"})
         }
     }
-
-
 
 
 }

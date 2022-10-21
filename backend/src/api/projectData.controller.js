@@ -37,8 +37,13 @@ class ProjectDataController {
     } 
 
     static async apiUpdateProject(req, res, next) {
+        // console.log(req.body)
+        let ProjectQuery
+  
+        req ? ProjectQuery=req : console.log("Data did not persist properly")
         try {
-            await projectDataDAO.updateProject(req)
+            ProjectQuery = await projectDataDAO.updateProject(ProjectQuery.body)
+            res.json(ProjectQuery)
         } catch (err) {
             res.status(500).json({error:err})
         }
