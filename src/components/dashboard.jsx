@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import AuthService from "../utils/auth.service";
 import axios from 'axios';
+import ProjectForm from "./dashboard/project-form";
+import ArticleForm from "./dashboard/article-form";
 
-
-const Dashboard = () => {
+//todo create project/article gallery and add update method to api
+const Dashboard = (props) => {
 
     const [proTitle, setProTitle] = useState("");
     const [proDesc, setProDesc] = useState("");
@@ -42,9 +44,9 @@ const Dashboard = () => {
         } 
     }
 
-    const _handleSubmmit = event => {
+    const _handleAddProjectSubmmit = event => {
         event.preventDefault();
-        axios.post(`http://138.197.151.61:7500/projects/post`, { 
+        axios.post(`http://localhost:7500/projects/post`, { 
             title: proTitle,
             description: proDesc,
             repository: proRepo,
@@ -58,25 +60,33 @@ const Dashboard = () => {
         setProDemo(''); 
     }
 
+    const _handleEditProjectSubmmit  = async (event) => {
+        event.preventDefault();
+        await axios.put(`http://localhost:7500/projects/update`, { 
+            title: proTitle,
+            description: proDesc,
+            repository: proRepo,
+            demo: proDemo 
+        })
+        .catch( error => console.log("errpr on handle submmit: " + error))
+
+        setProTitle('');
+        setProDesc('');  
+        setProRepo('');
+        setProDemo(''); 
+    }
+
+    
+
     const _toggleMode = () => {
         if(mode === true){
             setMode(false);
         }
-        if(showProject === true){
-            setShowProject(false);
-        } 
-        if(showArticle === true){
-            setShowArticle(false);
-        }    
+  
         if(mode === false){
             setMode(true);
         }
-        if(showProject === false){
-            setShowProject(true);
-        } 
-        if(showArticle === false){
-            setShowArticle(true);
-        }     
+     
     }
     const _toggleArticle = () => {
         if(showProject === false){
@@ -135,42 +145,56 @@ const Dashboard = () => {
                 <><a href="/login"><button id="logout" onClick={logOut}>Logout</button></a>
                     <div id="add-content" hidden={mode}>
                         <div hidden={showProject} id="project-container">
-                            <form id='projects-form'>
-                                 <label for="title">Project name:</label><br />
-                                 <input className='form-field' type="text" id="title" name="title" value={proTitle} onChange={_handleInputsChange} /><br />
-
-                                 <label for="desc">Enter a description:</label><br />
-                                 <textarea type="text" id="desc" name="desc" value={proDesc} onChange={_handleInputsChange} /><br />
-
-                                 <label for="repo-link">Code repository link:</label><br />
-                                 <input className='form-field' type="text" id="repo-link" name="repo-link" value={proRepo} onChange={_handleInputsChange} /><br />
-
-                                 <label for="preview-link">Preview link:</label><br />
-                                 <input className='form-field' type="text" id="preview-link" name="preview-link" value={proDemo} onChange={_handleInputsChange} /><br />
-
-                                 <br />
-                                 <button onClick={_handleSubmmit}>Submit</button>
-                             </form>
+                            <h3>Add projects</h3>
+                            <ProjectForm
+                                _handleInputsChange={_handleInputsChange}
+                                 _handleSubmmit={_handleAddProjectSubmmit}    
+                                proTitle={proTitle}
+                                proDesc={proDesc}
+                                proRepo={proRepo}
+                                proDemo={proDemo}                 
+                            />
                          </div>
 
                         <div hidden={showArticle} id="article-container">
-                            <form id='articles-form'>
-                                  <label for="title">Article title:</label><br />
-                                 <input className='form-field' type="text" id="title" name="title" value={proTitle} onChange={_handleInputsChange} /><br />
-
-                                 <label for="content">content:</label><br />
-                                  <textarea type="text" id="content" name="content" value={proDesc} onChange={_handleInputsChange} /><br />
-
-                                <br />
-                                 <button onClick={_handleSubmmit}>Submit</button>
-                             </form>
+                            <h3>Add articles</h3>
+                            <ArticleForm
+                                _handleInputsChange={_handleInputsChange}
+                                _handleSubmmit={_handleAddProjectSubmmit}    
+                                proTitle={proTitle}
+                                proDesc={proDesc}
+                            />
+                        </div>
+                    </div>
+                    <div hidden={ mode===true?false:true} id="edit-content">
+                        <div hidden={showProject} id="project-container">
+                            <h3>Edit projects</h3>
+                            <ProjectForm
+                                _handleInputsChange={_handleInputsChange}
+                                _handleSubmmit={_handleEditProjectSubmmit}    
+                                proTitle={proTitle}
+                                proDesc={proDesc}
+                                proRepo={proRepo}
+                                proDemo={proDemo}                 
+                            />
                         </div>
 
-                    </div></>: 
+                         <div hidden={showArticle} id="article-container">
+                            <h3>Edit articles</h3>
+                            <ArticleForm
+                                _handleInputsChange={_handleInputsChange}
+                                _handleSubmmit={_handleAddProjectSubmmit}    
+                                proTitle={proTitle}
+                                proDesc={proDesc}
+                            />
+                        </div>    
+                    </div>
+                </>: 
                 <>
                     <p>Not logged in as admin</p>
                     <a href="/login"><button id="login">Login</button></a>
-            </>}
+                </>
+            }
             </div>
             
 
