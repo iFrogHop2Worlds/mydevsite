@@ -8,7 +8,6 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 export default function Home() {
     const [items,  setItems] = useState([]);
-    const [projectQuery, setProjectQuery] = useState([{}]);
 
     const responsive = {
         400: { items: 1 },
@@ -17,7 +16,8 @@ export default function Home() {
         1500: { items: 5 }
     };
     const getReq = async () => {
-        let q =  await axios.get('http://localhost:7500/projects/all');
+        setItems([]);
+        let q =  await axios.get('http://138.197.151.61:7500/projects/all');
         const constructItem = (_name, i) => {
             let _dataValue = i + 1;
             items.push(
@@ -26,13 +26,11 @@ export default function Home() {
             setItems(items);
         }
 
-        if(items.length < q.data.length-1)
+  
         for(let i = 0; i < q.data.length; i++){  
-            setItems([]);
             constructItem(q.data[i].title, i);         
             console.log(items)
         }
-        setProjectQuery(q.data)
     }
 
     useEffect(() => {
@@ -239,7 +237,6 @@ export default function Home() {
                 background-image: url('https://blogs.lse.ac.uk/lsereviewofbooks/files/2012/06/ElinorOstrom.jpg');      
             }
                
-                
             .item_6 {
                 background-image: url('https://images2.imgbox.com/49/9e/HEcDI9Wf_o.png');
             }
@@ -258,7 +255,9 @@ export default function Home() {
             .item_11 {
                 background-image: url('https://images2.imgbox.com/1b/c4/5mZSJ1Yw_o.png');
             }
-
+            .item_12 {
+                background-image: url('https://www.lawrenceprospera.org/images/quintana/Page_Under_Construction.jpg');
+            }
             .top {
                 --offset: 50px; 
                 margin-left: 90%;
