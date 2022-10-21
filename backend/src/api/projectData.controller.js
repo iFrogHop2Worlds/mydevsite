@@ -9,8 +9,8 @@ class ProjectDataController {
         try {
             ProjectQuery = await projectDataDAO.getProject(ProjectQuery)
             res.json(ProjectQuery)
-        } catch (err) {
-            res.status(500).json({error: err});
+        } catch (e) {
+            res.status(500).json({error: e});
         }
     }  
 
@@ -21,8 +21,8 @@ class ProjectDataController {
         try {
             ProjectQuery = await projectDataDAO.getAllProjects()
             res.json(ProjectQuery)
-        } catch (err) {
-            res.status(500).json({error: err});
+        } catch (e) {
+            res.status(500).json({error: e});
         }
     }
 
@@ -31,8 +31,8 @@ class ProjectDataController {
         req ? Project=req : console.log("Data did not persist properly")
         try {
             await projectDataDAO.addProject(Project.body); 
-        } catch (err) {
-            console.log(err);
+        } catch (e) {
+            console.log(e);
         }
     } 
 
@@ -44,17 +44,18 @@ class ProjectDataController {
         try {
             ProjectQuery = await projectDataDAO.updateProject(ProjectQuery.body)
             res.json(ProjectQuery)
-        } catch (err) {
-            res.status(500).json({error:err})
+        } catch (e) {
+            res.status(500).json({error:e})
         }
     }
 
     static async apiDeleteProject(req, res, next){
-        // try{
-        //     await projectDataDAO.deleteOne({product: "Fire"})
-        // } catch (e){
-        //     res.json({message: "still working on it"})
-        // }
+        console.log(req.body._id)
+        try{
+            await projectDataDAO.deleteProject(req.body.title)
+        } catch (e){
+            res.status(500).json({error:e})
+        }
     }
 
 }

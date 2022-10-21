@@ -17,7 +17,7 @@ const ProjectForm = (props) => {
             <input className='form-field' type="text" id="preview-link" name="preview-link" value={props.proDemo} onChange={props._handleInputsChange} /><br />
 
             <br />
-            <button onClick={props._handleSubmmit}>Submit</button>
+            <button onClick={props._handleSubmmit}>Submit</button>  <button onClick={props._handleDelete}>Delete</button>
         </form>
     </>
   )

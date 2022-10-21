@@ -7,7 +7,7 @@ import ArticleForm from "./dashboard/article-form";
 
 //todo create project/article gallery and add update method to api
 const Dashboard = (props) => {
-
+    const [ proId, setProId] = useState("")
     const [proTitle, setProTitle] = useState("");
     const [proDesc, setProDesc] = useState("");
     const [proRepo, setProRepo] = useState("");
@@ -16,8 +16,21 @@ const Dashboard = (props) => {
     const [userReady, setUserReady] = useState(false);
     const [currentUser, setCurrentUser] = useState({username: ""});
     const [mode, setMode] = useState(false);
-    const [showProject, setShowProject] = useState(false); // default view will be projects for now. 
-    const [showArticle, setShowArticle] = useState(true)
+    const [showProject, setShowProject] = useState(false); 
+    const [showArticle, setShowArticle] = useState(true);
+    const [items,  setItems] = useState([]);
+
+    const getReq = async () => {
+        setItems([]);
+        let q =  await axios.get('http://138.197.151.61:7500/projects/all');
+        // items.push(q.data);
+        setItems(q.data);   
+       // console.log(q.data)
+    }
+
+    useEffect(() => {
+        getReq() 
+    }, []);
     
     useEffect(() => {
       console.log("hi")
@@ -27,6 +40,10 @@ const Dashboard = (props) => {
       if(currentUser) setUserReady(true);
      
     }, []);
+
+    const _setFormFields = (id) => {
+        console.log("ok now what" + id)
+    }
 
     const _handleInputsChange = event => {
         const target = event.target;
@@ -76,7 +93,17 @@ const Dashboard = (props) => {
         setProDemo(''); 
     }
 
-    
+    const _handleDelete  = async (event) => {
+        event.preventDefault();
+        axios.put(`http://localhost:7500/projects/delete`,  proId )
+        .catch( error => console.log("errpr on handle submmit: " + error))
+
+        setProTitle('');
+        setProDesc('');  
+        setProRepo('');
+        setProDemo(''); 
+        getReq()
+    }
 
     const _toggleMode = () => {
         if(mode === true){
@@ -88,6 +115,7 @@ const Dashboard = (props) => {
         }
      
     }
+
     const _toggleArticle = () => {
         if(showProject === false){
             setShowProject(true);
@@ -115,7 +143,21 @@ const Dashboard = (props) => {
         setShowArticle(false);
         setCurrentUser(undefined);
       }
+      const buttons = document.getElementsByClassName("col-card");
 
+      const projectPressed = e => {
+        let id = e.target.id; 
+        setProId(items[id])
+        setProTitle(items[id].title);
+        setProDesc(items[id].description);
+        setProRepo(items[id].repository);
+        setProDemo(items[id].demo);
+      }
+      
+      for (let button of buttons) {
+        button.addEventListener("click", projectPressed);
+      }
+      let projectIndex = -1;
     return (
         <>
             <div id='background'>
@@ -143,12 +185,13 @@ const Dashboard = (props) => {
             
                 (currentUser.username === process.env.REACT_APP_ADMIN) ?  
                 <><a href="/login"><button id="logout" onClick={logOut}>Logout</button></a>
+
                     <div id="add-content" hidden={mode}>
                         <div hidden={showProject} id="project-container">
                             <h3>Add projects</h3>
                             <ProjectForm
                                 _handleInputsChange={_handleInputsChange}
-                                 _handleSubmmit={_handleAddProjectSubmmit}    
+                                _handleSubmmit={_handleAddProjectSubmmit}    
                                 proTitle={proTitle}
                                 proDesc={proDesc}
                                 proRepo={proRepo}
@@ -166,18 +209,43 @@ const Dashboard = (props) => {
                             />
                         </div>
                     </div>
+
                     <div hidden={ mode===true?false:true} id="edit-content">
-                        <div hidden={showProject} id="project-container">
-                            <h3>Edit projects</h3>
-                            <ProjectForm
-                                _handleInputsChange={_handleInputsChange}
-                                _handleSubmmit={_handleEditProjectSubmmit}    
-                                proTitle={proTitle}
-                                proDesc={proDesc}
-                                proRepo={proRepo}
-                                proDemo={proDemo}                 
-                            />
+
+                        <div className="row-container">                         
+                            <div className="col-container">
+                                <div hidden={showProject} id="project-container">
+                                <h3 className="form-title">Edit project</h3>
+                                    <ProjectForm
+                                        _handleInputsChange={_handleInputsChange}
+                                        _handleSubmmit={_handleEditProjectSubmmit} 
+                                        _handleDelete={_handleDelete}   
+                                        proTitle={proTitle}
+                                        proDesc={proDesc}
+                                        proRepo={proRepo}
+                                        proDemo={proDemo}                 
+                                    />
+                                    
+                                </div>
+                            </div>
+
+                            <div className="col-container">
+                                <h3>All projects</h3>
+                                <div className="row" id="project-gallery">
+                                    {items.map(project => {
+                                        return(
+                                            <>                                         
+                                            <div className="col-card" id="project-card" >
+                                                <p id={projectIndex+=1}>{project.title}</p>
+                                            </div>
+                                            </>
+                                        )
+                                    })}
+                                </div>
+                            </div>
                         </div>
+                        
+
 
                          <div hidden={showArticle} id="article-container">
                             <h3>Edit articles</h3>
@@ -203,7 +271,7 @@ const Dashboard = (props) => {
                 #background {
                     background-color: #1e282e;
                     color: #ffffff;
-                    height: 700px;
+                    height: auto;
                     width: auto;
                     padding-top: 20px;
 
@@ -223,20 +291,69 @@ const Dashboard = (props) => {
                    
                 }
                 form {
-                    padding-top: 50px;
                     padding-bottom: 1px;
                     height: auto;
                     width: 100%;
                     
                 }
                 .form-field {
-                    width: 500px;
+                    width: 550px;
                 }
                 textarea {
                     height: 120px;
-                    width: 500px;
+                    width: 550px;
                 }
 
+
+                .col-container {
+                    float: left;
+                    width: auto;
+                    height: auto;
+                    padding: 4%;
+                    text-align: center;
+                    display: grid;
+
+
+                }
+                .row-container {
+                   width: auto;
+                   height: auto;
+                }
+                .row-container:after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+                .col-card {
+                    float: left;
+                    width: 24%;
+                    margin: 5px;
+                }
+                .row {
+                }
+                /* Clear floats after image containers */
+                .row::after {
+                content: "";
+                clear: both;
+                display: table; 
+                }
+
+                #project-container {
+                    text-align: left;  
+                }
+                .form-title {
+                    text-align:center; 
+                     
+                }
+                #project-gallery {
+                    width: 700px;
+                }
+                #project-card {
+                    width: 220px;
+                    height: 50px;
+                    background-color: white;
+                    color: black;
+                }
 
             `}</style>
         </>

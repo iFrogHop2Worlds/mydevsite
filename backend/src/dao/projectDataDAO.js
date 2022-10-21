@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 
 
 let Projects
@@ -72,11 +73,12 @@ class ProjectDataDAO {
         }
     }
 
-    static async apiDeleteProject(req, res, next){
+    static async deleteProject(req, res, next){
         try{
-            await Projects.deleteOne({product: "Fire"})
+            let result = await Projects.deleteOne({ "title" : req })
+            console.log(result)
         } catch (e){
-            res.json({message: "still working on it"})
+            res.json({message: "error"} + e)
         }
     }
 
