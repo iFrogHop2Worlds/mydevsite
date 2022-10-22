@@ -37,5 +37,26 @@ class userDataDAO {
         }
     }  
 
+    static async ReplyQuestion(id, response) {
+        try {
+            await questions.updateOne(
+                { _id : id },
+                { $set: { "reply" : response?response:"no reply" } }
+            );
+            return "Success" 
+        } catch (err) {
+           console.log(err)
+        }
+    }
+
+    static async DeleteQuestion(id, res){
+        try{
+            let result = await questions.deleteOne({ _id : id })
+            console.log(result)
+        } catch (e){
+            res.json({message: "error"} + e)
+        }
+    }
+ 
 };
 module.exports = userDataDAO;

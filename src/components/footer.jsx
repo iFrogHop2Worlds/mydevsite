@@ -9,7 +9,6 @@ export default function Footer() {
         getReq("http://localhost:7500/user-api/get-questions")
         .then((res) => {
             setFaq(res);
-            console.log(res)
         })
         
     }, []);
@@ -24,7 +23,7 @@ export default function Footer() {
 
                     <p>Random question from:  {faq[i].name?faq[i].name: "anonymous"}</p>
                     <p>Q: {faq[i].question?faq[i].question: "error: corrupted data"}</p>
-                    <p>A: {faq[i].answer?faq[i].answer: "no reply yet"}</p>
+                    <p>A: {faq[i].reply?faq[i].reply: "no reply yet"}</p>
                 </>
             }  
                 

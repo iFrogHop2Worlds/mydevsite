@@ -4,6 +4,7 @@ import AuthService from "../utils/auth.service";
 import axios from 'axios';
 import ProjectForm from "./dashboard/project-form";
 import ArticleForm from "./dashboard/article-form";
+import getReq from "../utils/getReq"
 
 //todo create project/article gallery and add update method to api
 const Dashboard = (props) => {
@@ -19,14 +20,9 @@ const Dashboard = (props) => {
     const [showProject, setShowProject] = useState(false); 
     const [showArticle, setShowArticle] = useState(true);
     const [items,  setItems] = useState([]);
+    const [questions, setQuestions] = useState([]);
+    const [selectedQuestion, setSelectedQuestion] = useState("");
 
-    const getReq = async () => {
-        setItems([]);
-        let q =  await axios.get('http://138.197.151.61:7500/projects/all');
-        // items.push(q.data);
-        setItems(q.data);   
-       // console.log(q.data)
-    }
 
 
     useEffect(() => {
@@ -37,12 +33,25 @@ const Dashboard = (props) => {
         if(currentUser) setUserReady(true);
        
       }, []);
+
     useEffect(() => {
-        getReq() 
-    }, []);
+            getReq("http://138.197.151.61:7500/projects/all")
+            .then((res) => {
+                setItems(res);
+                console.log(res)
+            })
+            getReq("http://138.197.151.61/user-api/get-questions")
+            .then((res) => {
+                setQuestions(res);
+                console.log(res)
+            })
+            
+        }, []);
    
     useEffect(() => {
-        const buttons = document.getElementsByClassName("col-card");
+        const projects = document.getElementsByClassName("col-card");
+        const questionz_delete = document.getElementsByClassName("qbutton2");
+        const questionz_reply = document.getElementsByClassName("qbutton1");
 
         const projectPressed = e => {
           let id = e.target.id; 
@@ -53,11 +62,32 @@ const Dashboard = (props) => {
           setProDemo(items[id].demo);
           console.log(items[id])
         }
+
+        const questionDelPressed = e => {
+            let id = e.target.id;
+            setSelectedQuestion(questions[id]._id)
+            console.log(questions[id]._id)
+        }
+
         
-        for (let button of buttons) {
-          button.addEventListener("click", projectPressed);
+        const questionRepPressed = e => {
+            let id = e.target.id;
+            setSelectedQuestion(questions[id].reply)
+            console.log(questions[id])
+        }
+        
+        for (let project of projects) {
+          project.addEventListener("click", projectPressed);
         } 
-    },[items])
+
+        for (let q of questionz_reply) {
+            q.addEventListener("click", questionRepPressed);
+        } 
+
+        for (let q of questionz_delete) {
+            q.addEventListener("click", questionDelPressed);
+        } 
+    },[items, questions])
 
 
     const _handleInputsChange = event => {
@@ -164,6 +194,9 @@ const Dashboard = (props) => {
       }
 
       let projectIndex = -1;
+      let btn1Index = -1;
+      let btn2Index = -1;
+      let questionsIndex = -1;
     return (
         <>
             <div id='background'>
@@ -181,7 +214,7 @@ const Dashboard = (props) => {
                 <button onClick={_toggleArticle} className='btn-animate btn-admin btn'>edit articles</button>
                 </>
             }  
-          
+            <a href="#manage-questions"><button>manage questions</button></a>
 
             {(currentUser === null) ? 
                 <>
@@ -265,6 +298,28 @@ const Dashboard = (props) => {
                             </div>
                         </div>
                     </div>
+                    <div id="manage-questions"> 
+                    <h3 >manage questions</h3>
+                        <div className="row">
+                            {questions.map(user => {
+                                return(
+                                <>                                         
+                                    <div className="col-card-question">
+                                    <p className="userquestion" id={questionsIndex+=1}>{user.question}</p>
+                                    <div id="center-box">
+                                        <button id={btn1Index+=1} className="qbutton1 qbutton">respond</button> 
+                                        <button id={btn2Index+=1} className="qbutton2 qbutton">delete</button>
+                                    </div>
+                                    
+                                    </div>
+                                </>
+                            )
+                            })}
+                        </div>
+                       
+                            
+
+                    </div>
                 </>: 
                 <>
                     <p>Not logged in as admin</p>
@@ -305,11 +360,11 @@ const Dashboard = (props) => {
                     
                 }
                 .form-field {
-                    width: 550px;
+                    width: 350px;
                 }
                 textarea {
                     height: 120px;
-                    width: 550px;
+                    width: 350px;
                 }
 
 
@@ -324,7 +379,7 @@ const Dashboard = (props) => {
 
                 }
                 .row-container {
-                   width: auto;
+                   width: 100%;
                    height: auto;
                 }
                 .row-container:after {
@@ -344,6 +399,18 @@ const Dashboard = (props) => {
                 content: "";
                 clear: both;
                 display: table; 
+                }
+                .col-card-question {
+                    float: left;
+                    width: 24%;
+                    margin: 5px;
+                    height: 350px;
+                    margin-left: 6.5%;
+                    background-color: beige;
+                    color: black;
+
+              
+                   
                 }
 
                 #project-container {
@@ -372,6 +439,28 @@ const Dashboard = (props) => {
                 #add-content {
                    padding-left: 6%;
                  
+                }
+                #manage-questions {
+                    height: auto;
+                    width: auto;
+
+                }
+                .userquestion {
+                    width: 100%; 
+                    height: 30%;
+    
+                }
+                .qbutton {
+                    margin-left: 5%;
+                    margin-right: 5%;
+                    width: 300px;
+                    height: 50px;     
+                }
+                #center-box {
+                    padding-top: 100px;
+                   height: 100px;
+                    display:flex;
+                    align-items: flex-end;
                 }
 
             `}</style>
