@@ -61,8 +61,8 @@ export default function Footer() {
             }
             .footer-col {
                 float: left;
-                width: 20%;
-                padding-left: 12%;
+                width: 17%;
+                padding-left: 16%;
                 text-align: left;
                 
             }
@@ -79,6 +79,9 @@ export default function Footer() {
 
             #footer-ul {
                 list-style: none;
+            }
+            #footer-li {
+                margin-left: -40px;
             }
             #footer-title {
                 font-size: 21px;
