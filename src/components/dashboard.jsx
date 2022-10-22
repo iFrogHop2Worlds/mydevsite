@@ -28,22 +28,37 @@ const Dashboard = (props) => {
        // console.log(q.data)
     }
 
+
+    useEffect(() => {
+        console.log("hi admin")
+        let user = AuthService.getCurrentUser()
+        setCurrentUser(user);
+        if (currentUser === null ) setRedirect({ redirect: "/" });
+        if(currentUser) setUserReady(true);
+       
+      }, []);
     useEffect(() => {
         getReq() 
     }, []);
-    
+   
     useEffect(() => {
-      console.log("hi")
-      let user = AuthService.getCurrentUser()
-      setCurrentUser(user);
-      if (currentUser === null ) setRedirect({ redirect: "/" });
-      if(currentUser) setUserReady(true);
-     
-    }, []);
+        const buttons = document.getElementsByClassName("col-card");
 
-    const _setFormFields = (id) => {
-        console.log("ok now what" + id)
-    }
+        const projectPressed = e => {
+          let id = e.target.id; 
+          setProId(items[id])
+          setProTitle(items[id].title);
+          setProDesc(items[id].description);
+          setProRepo(items[id].repository);
+          setProDemo(items[id].demo);
+          console.log(items[id])
+        }
+        
+        for (let button of buttons) {
+          button.addEventListener("click", projectPressed);
+        } 
+    },[items])
+
 
     const _handleInputsChange = event => {
         const target = event.target;
@@ -61,7 +76,7 @@ const Dashboard = (props) => {
         } 
     }
 
-    const _handleAddProjectSubmmit = event => {
+    const _handleAddProjectSubmmit = async event => {
         event.preventDefault();
         axios.post(`http://localhost:7500/projects/post`, { 
             title: proTitle,
@@ -74,7 +89,8 @@ const Dashboard = (props) => {
         setProTitle('');
         setProDesc('');  
         setProRepo('');
-        setProDemo(''); 
+        setProDemo('');
+        await getReq(); 
     }
 
     const _handleEditProjectSubmmit  = async (event) => {
@@ -91,6 +107,7 @@ const Dashboard = (props) => {
         setProDesc('');  
         setProRepo('');
         setProDemo(''); 
+        await getReq();
     }
 
     const _handleDelete  = async (event) => {
@@ -102,16 +119,18 @@ const Dashboard = (props) => {
         setProDesc('');  
         setProRepo('');
         setProDemo(''); 
-        getReq()
+        await getReq();
     }
 
     const _toggleMode = () => {
         if(mode === true){
             setMode(false);
+            getReq();
         }
   
         if(mode === false){
             setMode(true);
+            getReq();
         }
      
     }
@@ -143,20 +162,7 @@ const Dashboard = (props) => {
         setShowArticle(false);
         setCurrentUser(undefined);
       }
-      const buttons = document.getElementsByClassName("col-card");
 
-      const projectPressed = e => {
-        let id = e.target.id; 
-        setProId(items[id])
-        setProTitle(items[id].title);
-        setProDesc(items[id].description);
-        setProRepo(items[id].repository);
-        setProDemo(items[id].demo);
-      }
-      
-      for (let button of buttons) {
-        button.addEventListener("click", projectPressed);
-      }
       let projectIndex = -1;
     return (
         <>
@@ -185,37 +191,42 @@ const Dashboard = (props) => {
             
                 (currentUser.username === process.env.REACT_APP_ADMIN) ?  
                 <><a href="/login"><button id="logout" onClick={logOut}>Logout</button></a>
+                <div id="add-content" hidden={mode}>
+                    <div className="row-container">
+                        <div className="col-container">                      
+                            <div hidden={showProject} id="project-container">
+                                <h3>Add projects</h3>
+                                <ProjectForm
+                                    _handleInputsChange={_handleInputsChange}
+                                    _handleSubmmit={_handleAddProjectSubmmit}    
+                                    proTitle={proTitle}
+                                    proDesc={proDesc}
+                                    proRepo={proRepo}
+                                    proDemo={proDemo}                 
+                                />
+                            </div>
 
-                    <div id="add-content" hidden={mode}>
-                        <div hidden={showProject} id="project-container">
-                            <h3>Add projects</h3>
-                            <ProjectForm
-                                _handleInputsChange={_handleInputsChange}
-                                _handleSubmmit={_handleAddProjectSubmmit}    
-                                proTitle={proTitle}
-                                proDesc={proDesc}
-                                proRepo={proRepo}
-                                proDemo={proDemo}                 
-                            />
-                         </div>
-
-                        <div hidden={showArticle} id="article-container">
-                            <h3>Add articles</h3>
-                            <ArticleForm
-                                _handleInputsChange={_handleInputsChange}
-                                _handleSubmmit={_handleAddProjectSubmmit}    
-                                proTitle={proTitle}
-                                proDesc={proDesc}
-                            />
+                            <div hidden={showArticle} id="article-container">
+                                <h3>Add articles</h3>
+                                <ArticleForm
+                                    _handleInputsChange={_handleInputsChange}
+                                    _handleSubmmit={_handleAddProjectSubmmit}    
+                                    proTitle={proTitle}
+                                    proDesc={proDesc}
+                                />
+                            </div>
+                        </div>
+                            
                         </div>
                     </div>
+                    
 
                     <div hidden={ mode===true?false:true} id="edit-content">
 
                         <div className="row-container">                         
                             <div className="col-container">
                                 <div hidden={showProject} id="project-container">
-                                <h3 className="form-title">Edit project</h3>
+                                <h3>Edit project</h3>
                                     <ProjectForm
                                         _handleInputsChange={_handleInputsChange}
                                         _handleSubmmit={_handleEditProjectSubmmit} 
@@ -227,6 +238,15 @@ const Dashboard = (props) => {
                                     />
                                     
                                 </div>
+                            <div hidden={showArticle} id="article-container">
+                                <h3>Edit articles</h3>
+                                <ArticleForm
+                                    _handleInputsChange={_handleInputsChange}
+                                    _handleSubmmit={_handleAddProjectSubmmit}    
+                                    proTitle={proTitle}
+                                    proDesc={proDesc}
+                                />
+                            </div>  
                             </div>
 
                             <div className="col-container">
@@ -244,18 +264,6 @@ const Dashboard = (props) => {
                                 </div>
                             </div>
                         </div>
-                        
-
-
-                         <div hidden={showArticle} id="article-container">
-                            <h3>Edit articles</h3>
-                            <ArticleForm
-                                _handleInputsChange={_handleInputsChange}
-                                _handleSubmmit={_handleAddProjectSubmmit}    
-                                proTitle={proTitle}
-                                proDesc={proDesc}
-                            />
-                        </div>    
                     </div>
                 </>: 
                 <>
@@ -341,6 +349,9 @@ const Dashboard = (props) => {
                 #project-container {
                     text-align: left;  
                 }
+                #article-container {
+                    text-align: left;
+                }
                 .form-title {
                     text-align:center; 
                      
@@ -353,6 +364,14 @@ const Dashboard = (props) => {
                     height: 50px;
                     background-color: white;
                     color: black;
+                }
+                #edit-content {
+                   padding-left: 6%;
+                 
+                }
+                #add-content {
+                   padding-left: 6%;
+                 
                 }
 
             `}</style>

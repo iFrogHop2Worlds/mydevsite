@@ -3,6 +3,7 @@ const app = require("./src/server");
 const { MongoClient } = require("mongodb");
 const port = process.env.PORT || 8181;
 const ProjectDataDAO = require('./src/dao/projectDataDAO')
+const userDataDAO = require("./src/dao/userDataDAO")
  
 MongoClient.connect(
         process.env.DEVSITE_DB_URI,
@@ -21,7 +22,7 @@ MongoClient.connect(
     .then(async client => {
 
         await ProjectDataDAO.injectDB(client);
-
+        await userDataDAO.injectDB(client)
         app.listen(port, () => {
             console.log(`Server is running on port: ${port}`);
         });

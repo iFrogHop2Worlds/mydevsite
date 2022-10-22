@@ -1,15 +1,34 @@
-import React from 'react'
-
+import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
+ import getReq from '../utils/getReq'
 export default function Footer() {
+
+    const [faq, setFaq] = useState([]);
+    let i = Math.floor(Math.random() * faq.length);
+    useEffect(() => {
+        getReq("http://localhost:7500/user-api/get-questions")
+        .then((res) => {
+            setFaq(res);
+            console.log(res)
+        })
+        
+    }, []);
+
   return (
     <div>
         <div className='footer-row' id='footer'>
-
             <div className='footer-col' id='testimonials'>
-                <p> Testimonial 1: dummy text.....</p>
-            </div>
-            <div className='footer-col' id='space'>
+            <Link to={'/FAQs'}><h3>FAQ's</h3></Link>
+            { faq.length > 1 &&
+                <>
 
+                    <p>Random question from:  {faq[i].name?faq[i].name: "anonymous"}</p>
+                    <p>Q: {faq[i].question?faq[i].question: "error: corrupted data"}</p>
+                    <p>A: {faq[i].answer?faq[i].answer: "no reply yet"}</p>
+                </>
+            }  
+                
+                
             </div>
 
             <div className='footer-col' id='affiliates'>
@@ -37,12 +56,15 @@ export default function Footer() {
                 width: 100%;  
                 color: #faffff;
                 padding-top:20px; 
+                
+        
             }
             .footer-col {
                 float: left;
-                width: 300px;
-                padding: 10px;
-                text-align: right;
+                width: 20%;
+                padding-left: 12%;
+                text-align: left;
+                
             }
             .footer-row {
             width: 100%;
@@ -60,6 +82,17 @@ export default function Footer() {
             }
             #footer-title {
                 font-size: 21px;
+            }
+            #testimonials {
+               padding-top: 20px;
+              
+               
+            }
+            #socials {
+                
+            }
+            #affiliates {
+               
             }
 
 

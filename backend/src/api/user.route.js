@@ -4,9 +4,10 @@ const user = require("./user.controller");
 
 const router = new Router();
 
-router.route("/all").get(user.apiAllAccess);
-router.route("/user").get([authJwt.verifyToken], user.apiUserBoard);
-router.route("/mod").get([authJwt.verifyToken, authJwt.isModerator], user.apiModeratorBoard);
-router.route("/admin").get([authJwt.verifyToken, authJwt.isAdmin], user.apiAdminBoard);
+
+
+// user questions
+router.route("/submit-question").post(user.apiSubmitQuestion);
+router.route("/get-questions").get(user.apiGetQuestions);
 
 module.exports = router;

@@ -1,23 +1,33 @@
-let User; // set db instance
+let DB ;
+let questions;
+   
 class userDataDAO {
 
-    static async signup(credentials) {
-        try {
-            let q = await User
-            .find({username: credentials.query.username})
-            .project({})
-            .toArray();
-         
-            return q
-        } catch (err) {
-            console.log(err);
+    static async injectDB(conn) {
+     
+        try{
+            DB = await conn.db("devsite");
+            questions = await conn.db("test").collection("questions");
+           
+            console.log("connection to userDAO db established")
+        } catch (e) {
+            console.error(`unable to establish a connection handle in userDAO: ${e}`)
         }
-    }   
+    }
 
-    static async getuser(credentials) {
+    static async SubmitQuestion(question) {
         try {
-            let q = await User
-            .find({username: credentials.query.username})
+            if(question == undefined)return;
+            await questions.insertOne(question)
+        } catch (err) {
+            console.log(err);
+        }
+    } 
+
+    static async GetQuestions(req, res) {
+        try {
+            let q = await questions
+            .find({})
             .project({})
             .toArray();
          
@@ -25,7 +35,7 @@ class userDataDAO {
         } catch (err) {
             console.log(err);
         }
-    }   
+    }  
 
 };
 module.exports = userDataDAO;

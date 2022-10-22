@@ -1,42 +1,25 @@
-// const userDataDAO = require("../dao/userDataDAO");
+const userDataDAO = require("../dao/userDataDAO");
 
 class userDataController {
 
-    static async apiAllAccess(req, res, next) {
-        let X 
-        req ? X = req : console.log("Data did not persist properly")
-        try {
-            res.status(200).send("Public Content.");
-        } catch (err) {
-            res.status(500).json({error: err});
-        }
-    } 
-
-    static async apiUserBoard(req, res, next) {
-        let X 
-        req ? X = req : console.log("Data did not persist properly")
-        try {
-            res.status(200).send("User Content.");
-        } catch (err) {
-            res.status(500).json({error: err});
-        }
-    } 
-
-    static async apiAdminBoard(req, res, next) {
-        let X 
-        req ? X = req : console.log("Data did not persist properly")
-        try {
-            res.status(200).send("Admin Content.");
-        } catch (err) {
-            res.status(500).json({error: err});
-        }
-    } 
-
-    static async apiModeratorBoard(req, res, next) {
+    static async apiSubmitQuestion(req, res, next) {
         let X  
         req ? X = req : console.log("Data did not persist properly")
+        console.log(X.body)
         try {
-            res.status(200).send("Public Content.");
+            await userDataDAO.SubmitQuestion(X.body);
+        } catch (err) {
+            res.status(500).json({error: err});
+        }
+    } 
+
+    static async apiGetQuestions(req, res, next) {
+        let X  
+        req ? X = req : console.log("Data did not persist properly")
+        console.log(X.body)
+        try {
+            X = await userDataDAO.GetQuestions(X.body);
+            res.json(X);
         } catch (err) {
             res.status(500).json({error: err});
         }
