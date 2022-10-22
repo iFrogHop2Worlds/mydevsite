@@ -40,7 +40,7 @@ const Dashboard = (props) => {
                 setItems(res);
                 console.log(res)
             })
-            getReq("http://138.197.151.61/user-api/get-questions")
+            getReq("http://138.197.151.61:7500/user-api/get-questions")
             .then((res) => {
                 setQuestions(res);
                 console.log(res)
