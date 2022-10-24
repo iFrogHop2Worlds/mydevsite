@@ -5,7 +5,7 @@ class userDataController {
     static async apiSubmitQuestion(req, res, next) {
         let X  
         req ? X = req : console.log("Data did not persist properly")
-        console.log(X.body)
+        // console.log(X.body)
         try {
             await userDataDAO.SubmitQuestion(X.body);
         } catch (err) {
@@ -16,7 +16,7 @@ class userDataController {
     static async apiGetQuestions(req, res, next) {
         let X  
         req ? X = req : console.log("Data did not persist properly")
-        console.log(X.body)
+        // console.log(X.body)
         try {
             X = await userDataDAO.GetQuestions(X.body);
             res.json(X);
@@ -28,9 +28,9 @@ class userDataController {
     static async apiDeleteQuestion(req, res, next) {
         let X  
         req ? X = req : console.log("Data did not persist properly")
-        console.log(X.body)
+        // console.log(X.body)
         try {
-            X = await userDataDAO.DeleteQuestions(X.body);
+            X = await userDataDAO.DeleteQuestion(ObjectID(X.body.id));
         } catch (err) {
             res.status(500).json({error: err});
         }
@@ -39,7 +39,7 @@ class userDataController {
     static async apiReplyQuestion(req, res, next) {
         let X  
         req ? X = req : console.log("Data did not persist properly")
-        console.log(X.body)
+        // console.log(X.body)
         try {
             X = await userDataDAO.ReplyQuestion(ObjectID(X.body.id), X.body.response);
             res.json(X)

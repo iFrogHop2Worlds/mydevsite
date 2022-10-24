@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
 import AuthService from "../utils/auth.service";
 import axios from 'axios';
@@ -8,6 +8,7 @@ import getReq from "../utils/getReq"
 
 //todo create project/article gallery and add update method to api
 const Dashboard = (props) => {
+    const [refresh, setRefresh] = useState(0);
     const [ proId, setProId] = useState("")
     const [proTitle, setProTitle] = useState("");
     const [proDesc, setProDesc] = useState("");
@@ -21,9 +22,21 @@ const Dashboard = (props) => {
     const [showArticle, setShowArticle] = useState(true);
     const [items,  setItems] = useState([]);
     const [questions, setQuestions] = useState([]);
-    const [selectedQuestion, setSelectedQuestion] = useState("");
+    const [myResponse, setMyResonse] = useState("");
+    const [showReplyBox, setShowReplyBox] = useState(new Map());
+    
+    const inputRef = React.useRef('');
 
 
+
+    let projectIndex = -1;
+    let btn1Index = -1;
+    let btn2Index = -1;
+    let questionsIndex = 0;
+
+    const _refreshElement = () => {
+        setRefresh(Math.random(1, 10))
+    }
 
     useEffect(() => {
         console.log("hi admin")
@@ -31,9 +44,9 @@ const Dashboard = (props) => {
         setCurrentUser(user);
         if (currentUser === null ) setRedirect({ redirect: "/" });
         if(currentUser) setUserReady(true);
-       
+        
       }, []);
-
+ 
     useEffect(() => {
             getReq("http://138.197.151.61:7500/projects/all")
             .then((res) => {
@@ -45,13 +58,22 @@ const Dashboard = (props) => {
                 setQuestions(res);
                 console.log(res)
             })
-            
+
+           
         }, []);
-   
+    
     useEffect(() => {
+       
+        for(let i =0; i != questions.length; i++) {
+            if(showReplyBox.length == questions.length) {return 0;}
+            showReplyBox.set(i, true);
+        };
+        setShowReplyBox(showReplyBox);
+     
         const projects = document.getElementsByClassName("col-card");
         const questionz_delete = document.getElementsByClassName("qbutton2");
         const questionz_reply = document.getElementsByClassName("qbutton1");
+        const mngQuestionBtns = document.getElementsByClassName("mngbtn");
 
         const projectPressed = e => {
           let id = e.target.id; 
@@ -65,32 +87,64 @@ const Dashboard = (props) => {
 
         const questionDelPressed = e => {
             let id = e.target.id;
-            setSelectedQuestion(questions[id]._id)
-            console.log(questions[id]._id)
-        }
+            console.log("id = " + id)
+            axios.put(`http://138.197.151.61:7500/user-api/faq/delete`,  {id: questions[id]._id} )
+            .catch( error => console.log("errpr on handle submmit: " + error))
 
-        
-        const questionRepPressed = e => {
+        }
+       
+        const questionRepPressed = async (e) => {
+            let id = e.target.id; 
+            console.log("id = " + id)       
+            let reqObj = {
+                id: questions[id]._id,
+                response: myResponse
+            }
+            axios.put("http://138.197.151.61:7500/user-api/faq/reply", reqObj)
+                .catch( e => {console.log(e)})
+            console.log(questions[id]);
+        }
+       
+        const manageQuestionPressed = e => {
+            
             let id = e.target.id;
-            setSelectedQuestion(questions[id].reply)
-            console.log(questions[id])
+            console.log("id = " + Number(id - 1))
+            // console.log(showReplyBox.get( Number(id - 1)))
+            if(showReplyBox.get( Number(id - 1)) == false){    
+                showReplyBox.set( Number(id - 1), true);
+                setShowReplyBox(showReplyBox); 
+               
+            } else if(showReplyBox.get( Number(id - 1)) == true){            
+                showReplyBox.set( Number(id - 1), false);
+                setShowReplyBox(showReplyBox);
+
+            }   
+            
+            console.log(showReplyBox) 
+           
         }
         
         for (let project of projects) {
           project.addEventListener("click", projectPressed);
         } 
 
-        for (let q of questionz_reply) {
-            q.addEventListener("click", questionRepPressed);
+        for (let r of questionz_reply) {
+            r.addEventListener("click", questionRepPressed);
         } 
 
-        for (let q of questionz_delete) {
-            q.addEventListener("click", questionDelPressed);
+        for (let d of questionz_delete) {
+            d.addEventListener("click", questionDelPressed);
         } 
-    },[items, questions])
+        for (let q of mngQuestionBtns) {
+            q.addEventListener("click", manageQuestionPressed);
+        } 
+       
+    },[items, myResponse, questions, refresh, showReplyBox])
 
+    const _handleInputsChange = (event, text) => {
+        event.preventDefault();
 
-    const _handleInputsChange = event => {
+    
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
@@ -103,12 +157,15 @@ const Dashboard = (props) => {
             setProRepo(value);
         } else if (name == "preview-link"){
             setProDemo(value);  
-        } 
+        }  else if (name == "myResponse"){
+            setMyResonse(inputRef.current.value);
+            console.log(myResponse)
+        }
     }
 
     const _handleAddProjectSubmmit = async event => {
         event.preventDefault();
-        axios.post(`http://localhost:7500/projects/post`, { 
+        axios.post(`http://138.197.151.61:7500/projects/post`, { 
             title: proTitle,
             description: proDesc,
             repository: proRepo,
@@ -125,7 +182,7 @@ const Dashboard = (props) => {
 
     const _handleEditProjectSubmmit  = async (event) => {
         event.preventDefault();
-        await axios.put(`http://localhost:7500/projects/update`, { 
+        await axios.put(`http://138.197.151.61:7500/projects/update`, { 
             title: proTitle,
             description: proDesc,
             repository: proRepo,
@@ -142,7 +199,7 @@ const Dashboard = (props) => {
 
     const _handleDelete  = async (event) => {
         event.preventDefault();
-        axios.put(`http://localhost:7500/projects/delete`,  proId )
+        axios.put(`http://138.197.151.61:7500/projects/delete`,  proId )
         .catch( error => console.log("errpr on handle submmit: " + error))
 
         setProTitle('');
@@ -192,11 +249,8 @@ const Dashboard = (props) => {
         setShowArticle(false);
         setCurrentUser(undefined);
       }
-
-      let projectIndex = -1;
-      let btn1Index = -1;
-      let btn2Index = -1;
-      let questionsIndex = -1;
+      
+ 
     return (
         <>
             <div id='background'>
@@ -298,27 +352,29 @@ const Dashboard = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div id="manage-questions"> 
+                    <div id="manage-questions"  key={refresh}> 
                     <h3 >manage questions</h3>
                         <div className="row">
                             {questions.map(user => {
+                              
                                 return(
                                 <>                                         
                                     <div className="col-card-question">
                                     <p className="userquestion" id={questionsIndex+=1}>{user.question}</p>
-                                    <div id="center-box">
-                                        <button id={btn1Index+=1} className="qbutton1 qbutton">respond</button> 
+                                   
+                                    <div hidden={showReplyBox.get(questionsIndex - 1)}>
+                                        <label for="myResponse">response:</label><br />
+                                        <textarea type="text" id="myResponse" name="myResponse" value={myResponse} onChange={_handleInputsChange} />
+                                        <button id={btn1Index+=1} className="qbutton1 qbutton">submit</button> 
                                         <button id={btn2Index+=1} className="qbutton2 qbutton">delete</button>
                                     </div>
-                                    
+                                        <button id={questionsIndex} className="mngbtn" onClick={_refreshElement}>manage</button>
                                     </div>
                                 </>
                             )
                             })}
                         </div>
-                       
-                            
-
+                    
                     </div>
                 </>: 
                 <>
@@ -402,15 +458,14 @@ const Dashboard = (props) => {
                 }
                 .col-card-question {
                     float: left;
-                    width: 24%;
+                    width: 25%;
                     margin: 5px;
-                    height: 350px;
+                    height: auto;
                     margin-left: 6.5%;
                     background-color: beige;
                     color: black;
 
-              
-                   
+                                
                 }
 
                 #project-container {

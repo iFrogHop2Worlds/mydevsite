@@ -49,10 +49,10 @@ class userDataDAO {
         }
     }
 
-    static async DeleteQuestion(id, res){
+    static async DeleteQuestion(req, res){
         try{
-            let result = await questions.deleteOne({ _id : id })
-            console.log(result)
+            await questions.deleteOne({ _id : req })
+            return "Success"
         } catch (e){
             res.json({message: "error"} + e)
         }
