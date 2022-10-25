@@ -95,7 +95,7 @@ const Dashboard = (props) => {
        
         const questionRepPressed = async (e) => {
             let id = e.target.id; 
-            console.log("id = " + id)       
+            console.log(inputRef)       
             let reqObj = {
                 id: questions[id]._id,
                 response: myResponse
@@ -103,6 +103,7 @@ const Dashboard = (props) => {
             axios.put("http://138.197.151.61:7500/user-api/faq/reply", reqObj)
                 .catch( e => {console.log(e)})
             console.log(questions[id]);
+            setMyResonse("")
         }
        
         const manageQuestionPressed = e => {
@@ -159,7 +160,7 @@ const Dashboard = (props) => {
             setProDemo(value);  
         }  else if (name == "myResponse"){
             setMyResonse(inputRef.current.value);
-            console.log(myResponse)
+            console.log(inputRef.current.value)
         }
     }
 
@@ -361,10 +362,10 @@ const Dashboard = (props) => {
                                 <>                                         
                                     <div className="col-card-question">
                                     <p className="userquestion" id={questionsIndex+=1}>{user.question}</p>
-                                   
+                                  
                                     <div hidden={showReplyBox.get(questionsIndex - 1)}>
                                         <label for="myResponse">response:</label><br />
-                                        <textarea type="text" id="myResponse" name="myResponse" value={myResponse} onChange={_handleInputsChange} />
+                                        <textarea type="text" id="myResponse" name="myResponse" value={myResponse} onChange={_handleInputsChange} ref={inputRef}/>
                                         <button id={btn1Index+=1} className="qbutton1 qbutton">submit</button> 
                                         <button id={btn2Index+=1} className="qbutton2 qbutton">delete</button>
                                     </div>

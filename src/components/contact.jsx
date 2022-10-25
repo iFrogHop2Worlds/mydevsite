@@ -34,7 +34,7 @@ export default function Contact() {
   // which our faq component will draw from.
   const _submitQuestion = async (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:7500/user-api/submit-question`, { 
+    axios.post(`http://138.197.151.61:7500/user-api/submit-question`, { 
       email: email,
       name: name,
       question: question

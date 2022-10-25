@@ -17,7 +17,7 @@ export default function Home() {
     };
     const getReq = async () => {
         setItems([]);
-        let q =  await axios.get('http://138.197.151.61:7500/projects/all');
+        let q =  await axios.get(`http://138.197.151.61:7500/projects/all`);
         const constructItem = (_name, i) => {
             let _dataValue = i + 1;
             items.push(

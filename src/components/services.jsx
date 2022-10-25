@@ -7,7 +7,7 @@ export default function Services() {
     <div id='service-header-text'>
     <p>Traditional web and web3/blockchain services. Whether you want to build a new application, upgrade your existing one, utilize the blockchain or have your apps, dApps and smart contracts audited. I got you covered!</p>
     <div id='service-cta'>
-      <a href='/services'><button  id='navbtn'>Book now</button></a> <a href='/contact'><button  id='navbtn'>Inquire</button></a>
+      <a href='/inquiry'><button  id='navbtn'>Inquire now</button></a>
     </div>
     </div>
 
@@ -19,7 +19,7 @@ export default function Services() {
       </div>
       <div class="column">
         <h4>Update Codebase</h4>
-        <p>Have an old application and want to update the dependencies but are worried about breaking things? I will update and refactor your code as required to ensure a smooth process.</p>
+        <p>Have an existing application and want to update the dependencies? I will update and refactor your code as required to ensure a smooth update process.</p>
       </div>
       <div class="column">
         <h4>Security Audit</h4>
