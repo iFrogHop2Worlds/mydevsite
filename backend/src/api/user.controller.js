@@ -48,6 +48,48 @@ class userDataController {
         }
     } 
 
+
+    static async apiSubmitNewProject(req, res, next) {
+        let X  
+        req ? X = req : console.log("Data did not persist properly")
+        console.log(X.body)
+        try {
+            // await userDataDAO.SubmitQuestion(X.body);
+        } catch (err) {
+            res.status(500).json({error: err});
+        }
+    } 
+    static async apiSubmitUpgradeProject(req, res, next) {
+        let X  
+        req ? X = req : console.log("Data did not persist properly")
+        console.log(X.body)
+        try {
+            // await userDataDAO.SubmitQuestion(X.body);
+        } catch (err) {
+            res.status(500).json({error: err});
+        }
+    } 
+    static async apiSubmitConsultation(req, res, next) {
+        let X  
+        req ? X = req : console.log("Data did not persist properly")
+        console.log(X.body)
+        try {
+            // await userDataDAO.SubmitQuestion(X.body);
+        } catch (err) {
+            res.status(500).json({error: err});
+        }
+    } 
+    static async apiSubmitAudit(req, res, next) {
+        let X  
+        req ? X = req : console.log("Data did not persist properly")
+        console.log(X.body)
+        try {
+            // await userDataDAO.SubmitQuestion(X.body);
+        } catch (err) {
+            res.status(500).json({error: err});
+        }
+    } 
+
 }
 module.exports = userDataController
 

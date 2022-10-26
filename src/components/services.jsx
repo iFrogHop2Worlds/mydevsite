@@ -7,7 +7,7 @@ export default function Services() {
     <div id='service-header-text'>
     <p>Traditional web and web3/blockchain services. Whether you want to build a new application, upgrade your existing one, utilize the blockchain or have your apps, dApps and smart contracts audited. I got you covered!</p>
     <div id='service-cta'>
-      <a href='/inquiry'><button  id='navbtn'>Inquire now</button></a>
+      <a href='/inquiries'><button  id='navbtn'>Inquire now</button></a>
     </div>
     </div>
 

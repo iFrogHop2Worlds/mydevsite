@@ -1,42 +1,82 @@
 import React, { useState } from 'react'
-import AuditSecurityForm from './inquiries/audit-security-form';
-import ConsultationForm from './inquiries/consultation-form';
-import NewProductForm from './inquiries/newproduct-form';
-import UpgradeForm from './inquiries/upgrade-form';
+import GeneralInquiry from './inquiries/general-inquiry-form';
 
 
 const Inquiry = () => {
     const [currentForm, setCurrentForm] = useState('');
 
+  
+
+    const onChangeValue = (event) => {
+        setCurrentForm(event.target.value)    
+    }
 
     const switchForm = () => {
         switch(currentForm) {
-            case 'AuditSecurity':
-                return <AuditSecurityForm />
+            case 'Audit Security Form':
+                return <GeneralInquiry formName={currentForm} />;
             case 'Consultation Form':
-                return <ConsultationForm />;
-            case 'NewProduct':
-                return <NewProductForm />;
-            case 'UpgradeForm':
-                return <UpgradeForm />;
+                return <GeneralInquiry formName={currentForm}/>;
+            case 'New Product Form':
+                return <GeneralInquiry formName={currentForm}/>
+            case 'Upgrade Form':
+                return <GeneralInquiry formName={currentForm}/>;
             default:
-                return 'foo';
+                return <p id='cta-text'>Select a form option</p>;
         }
     }
 
     return (
-        <>
-            <div>Inquiry</div>
-            {switchForm}
+        <>  
+            <div id="background">
+                <div onChangeValue={onChangeValue}>
+        
+                    <input type="radio" value="Audit Security Form" name="Audit Security Form" checked={currentForm === "Audit Security Form"} onChange={onChangeValue} /> Audit Security Form
 
-            {/* <input type="radio" id="newApp" name="form_options" value="HTML"></input>
-            <label for="newApp">New application/website</label>
-            <input type="radio" id="consultation" name="form_options" value="HTML"></input>
-            <label for="consultation">Consultation</label>
-            <input type="radio" id="auditSecurity" name="form_options" value="HTML"></input>
-            <label for="auditSecurity">HTML</label>
-            <input type="radio" id="upgradeApp" name="form_options" value="HTML"></input>
-            <label for="upgradeApp">HTML</label> */}
+                    <input type="radio" value="Consultation Form" name="Consultation Form" checked={currentForm === "Consultation Form"} onChange={onChangeValue} /> Consultation Form
+
+                    <input type="radio" value="New Product Form" name="New Product Form" checked={currentForm === "New Product Form"} onChange={onChangeValue} /> New Product Form
+
+                    <input type="radio" value="Upgrade Form" name="Upgrade Form" checked={currentForm === "Upgrade Form"} onChange={onChangeValue} /> Upgrade Form
+
+                </div>
+                <div id='form-wrapper'>
+                    {(switchForm())}
+                </div>
+              
+
+            </div>
+            
+            
+
+            <style>{`
+                #background {
+                   
+                    background-color: #1e282e;
+                    color: #ffffff;
+                    height: auto;
+                    width: auto;
+                    padding-top: 140px;
+                    padding-bottom: 1px;
+                }
+                #cta-text {
+                    padding-top: 30px;
+                    padding-bottom: 100px;
+                    color: orange;
+                }
+                #form-wrapper {
+                    text-align: left;
+                    width: 381px;
+                    padding-left: 33%;
+                    padding-bottom: 5%;
+                }
+                @media only screen and (max-width: 800px) {
+                    #form-wrapper {
+                        padding-left: 10%;
+                    }
+                }
+              
+            `}</style>
       
         </>
 
