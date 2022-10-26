@@ -37,23 +37,23 @@ const GeneralInquiry = (props) => {
         e.preventDefault();
 
         if(props.formName === 'New Product Form'){
-             axios.post(`http://localhost:7500/user-api/inquiry/new`, {
+             axios.post(`http://138.197.151.61:7500/user-api/inquiry/new`, {
                 description: proDesc,
                 name: proName,
                 budget: proBudget
              });
         } else if (props.formName === "Audit Security Form"){
-             axios.post(`http://localhost:7500/user-api/inquiry/audit`, {
+             axios.post(`http://138.197.151.61:7500/user-api/inquiry/audit`, {
                 description: proDesc,
                 repository: proDesc,
                 domain: proDomain
              });  
         } else if (props.formName === "Consultation Form"){
-             axios.post(`http://localhost:7500/user-api/inquiry/consultation`, {
+             axios.post(`http://138.197.151.61:7500/user-api/inquiry/consultation`, {
                 description: proDesc
              });
         } else if (props.formName === "Upgrade Form"){
-            axios.post(`http://localhost:7500/user-api/inquiry/upgrade`, {
+            axios.post(`http://138.197.151.61:7500/user-api/inquiry/upgrade`, {
                 technologies: proTech,
                 released: proReleaseDate,
                 repository: proRepo,
