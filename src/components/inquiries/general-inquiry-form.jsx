@@ -18,17 +18,17 @@ const GeneralInquiry = (props) => {
 
         if(name == 'desc'){
             setDesc(value); 
-        } else if (name == "title"){
+        } else if (name === "title"){
             setName(value);   
-        } else if (name == "budget"){
+        } else if (name === "budget"){
             setBudget(value);
-        } else if (name == "tech-stack"){
+        } else if (name === "tech-stack"){
             setTech(value);
-        } else if (name == "release-date"){
+        } else if (name === "release-date"){
             setReleaseDate(value);
-        } else if (name == "repo"){
+        } else if (name === "repo"){
             setRepo(value);
-        } else if (name == "domain"){
+        } else if (name === "domain"){
             setDomain(value);
         }
     }
@@ -37,23 +37,23 @@ const GeneralInquiry = (props) => {
         e.preventDefault();
 
         if(props.formName === 'New Product Form'){
-             axios.post(`http://138.197.151.61:7500/user-api/inquiry/new`, {
+             axios.post(`http://localhost:7500/user-api/inquiry/new`, {
                 description: proDesc,
                 name: proName,
                 budget: proBudget
              });
         } else if (props.formName === "Audit Security Form"){
-             axios.post(`http://138.197.151.61:7500/user-api/inquiry/audit`, {
+             axios.post(`http://localhost:7500/user-api/inquiry/audit`, {
                 description: proDesc,
                 repository: proDesc,
                 domain: proDomain
              });  
         } else if (props.formName === "Consultation Form"){
-             axios.post(`http://138.197.151.61:7500/user-api/inquiry/consultation`, {
+             axios.post(`http://localhost:7500/user-api/inquiry/consultation`, {
                 description: proDesc
              });
         } else if (props.formName === "Upgrade Form"){
-            axios.post(`http://138.197.151.61:7500/user-api/inquiry/upgrade`, {
+            axios.post(`http://localhost:7500/user-api/inquiry/upgrade`, {
                 technologies: proTech,
                 released: proReleaseDate,
                 repository: proRepo,

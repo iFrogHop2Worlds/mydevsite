@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import history from '../utils/history'
+import history from '../../utils/history'
 
 const Hamburger = () => {
     const [showBurger, setShowBurger] = useState(false)

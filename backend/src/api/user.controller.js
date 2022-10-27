@@ -54,7 +54,7 @@ class userDataController {
         req ? X = req : console.log("Data did not persist properly")
         console.log(X.body)
         try {
-            // await userDataDAO.SubmitQuestion(X.body);
+             await userDataDAO.SubmitNewProductInquiry(X.body);
         } catch (err) {
             res.status(500).json({error: err});
         }
@@ -64,7 +64,7 @@ class userDataController {
         req ? X = req : console.log("Data did not persist properly")
         console.log(X.body)
         try {
-            // await userDataDAO.SubmitQuestion(X.body);
+             await userDataDAO.SubmitUpgradeProductInquiry(X.body);
         } catch (err) {
             res.status(500).json({error: err});
         }
@@ -74,7 +74,7 @@ class userDataController {
         req ? X = req : console.log("Data did not persist properly")
         console.log(X.body)
         try {
-            // await userDataDAO.SubmitQuestion(X.body);
+             await userDataDAO.SubmitConsultationInquiry(X.body);
         } catch (err) {
             res.status(500).json({error: err});
         }
@@ -84,12 +84,12 @@ class userDataController {
         req ? X = req : console.log("Data did not persist properly")
         console.log(X.body)
         try {
-            // await userDataDAO.SubmitQuestion(X.body);
+             await userDataDAO.SubmitAuditInquiry(X.body);
         } catch (err) {
             res.status(500).json({error: err});
         }
     } 
-
+ 
 }
 module.exports = userDataController
 

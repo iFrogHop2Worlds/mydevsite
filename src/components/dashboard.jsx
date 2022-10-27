@@ -4,7 +4,7 @@ import AuthService from "../utils/auth.service";
 import axios from 'axios';
 import ProjectForm from "./dashboard/project-form";
 import ArticleForm from "./dashboard/article-form";
-import getReq from "../utils/getReq"
+import getReq from "../helpers/getReq"
 
 //todo create project/article gallery and add update method to api
 const Dashboard = (props) => {
@@ -64,8 +64,8 @@ const Dashboard = (props) => {
     
     useEffect(() => {
        
-        for(let i =0; i != questions.length; i++) {
-            if(showReplyBox.length == questions.length) {return 0;}
+        for(let i =0; i !== questions.length; i++) {
+            if(showReplyBox.length === questions.length) {return 0;}
             showReplyBox.set(i, true);
         };
         setShowReplyBox(showReplyBox);
@@ -111,11 +111,11 @@ const Dashboard = (props) => {
             let id = e.target.id;
             console.log("id = " + Number(id - 1))
             // console.log(showReplyBox.get( Number(id - 1)))
-            if(showReplyBox.get( Number(id - 1)) == false){    
+            if(showReplyBox.get( Number(id - 1)) === false){    
                 showReplyBox.set( Number(id - 1), true);
                 setShowReplyBox(showReplyBox); 
                
-            } else if(showReplyBox.get( Number(id - 1)) == true){            
+            } else if(showReplyBox.get( Number(id - 1)) === true){            
                 showReplyBox.set( Number(id - 1), false);
                 setShowReplyBox(showReplyBox);
 
@@ -150,15 +150,15 @@ const Dashboard = (props) => {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
     
-        if(name == 'title'){
+        if(name === 'title'){
             setProTitle(value); 
-        } else if (name == "desc"){
+        } else if (name === "desc"){
             setProDesc(value);   
-        } else if (name == "repo-link"){
+        } else if (name === "repo-link"){
             setProRepo(value);
-        } else if (name == "preview-link"){
+        } else if (name === "preview-link"){
             setProDemo(value);  
-        }  else if (name == "myResponse"){
+        }  else if (name === "myResponse"){
             setMyResonse(inputRef.current.value);
             console.log(inputRef.current.value)
         }

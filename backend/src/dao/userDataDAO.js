@@ -1,6 +1,10 @@
 let DB ;
 let questions;
-   
+let consultationInquiries;
+let auditInquiries;
+let newProductInquiries;
+let upgradeProductInquiries;
+
 class userDataDAO {
 
     static async injectDB(conn) {
@@ -8,6 +12,10 @@ class userDataDAO {
         try{
             DB = await conn.db("devsite");
             questions = await conn.db("test").collection("questions");
+            consultationInquiries = await conn.db("test").collection("inquiry_consultations");
+            auditInquiries = await conn.db("test").collection("inquiry_audits");
+            newProductInquiries = await conn.db("test").collection("inquiry_newproducts");
+            upgradeProductInquiries = await conn.db("test").collection("inquiry_upgradeproducts");
            
             console.log("connection to userDAO db established")
         } catch (e) {
@@ -17,7 +25,7 @@ class userDataDAO {
 
     static async SubmitQuestion(question) {
         try {
-            if(question == undefined)return;
+            if(question === undefined)return;
             await questions.insertOne(question)
         } catch (err) {
             console.log(err);
@@ -57,6 +65,42 @@ class userDataDAO {
             res.json({message: "error"} + e)
         }
     }
+
+    static async SubmitNewProductInquiry(inquiry) {
+        try {
+            if(inquiry === undefined)return;
+            await newProductInquiries.insertOne(inquiry)
+        } catch (err) {
+            console.log(err);
+        }
+    } 
+
+    static async SubmitUpgradeProductInquiry(inquiry) {
+        try {
+            if(inquiry === undefined)return;
+            await upgradeProductInquiries.insertOne(inquiry)
+        } catch (err) {
+            console.log(err);
+        }
+    } 
+
+    static async SubmitConsultationInquiry(inquiry) {
+        try {
+            if(inquiry === undefined)return;
+            await consultationInquiries.insertOne(inquiry)
+        } catch (err) {
+            console.log(err);
+        }
+    } 
+
+    static async SubmitAuditInquiry(inquiry) {
+        try {
+            if(inquiry === undefined)return;
+            await auditInquiries.insertOne(inquiry)
+        } catch (err) {
+            console.log(err);
+        }
+    } 
  
 };
 module.exports = userDataDAO;

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
- import getReq from '../utils/getReq'
+ import getReq from '../../helpers/getReq'
 export default function Footer() {
 
     const [faq, setFaq] = useState([]);
