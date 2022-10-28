@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
 import AuthService from "../utils/auth.service";
 import axios from 'axios';
-import ProjectForm from "./dashboard/project-form";
-import ArticleForm from "./dashboard/article-form";
 import getReq from "../helpers/getReq"
+import ManageSiteContent from "./dashboard/manage-content";
+import ManageQuestions from "./dashboard/manage-questions";
 
 //todo create project/article gallery and add update method to api
-const Dashboard = (props) => {
+const Dashboard = () => {
     const [refresh, setRefresh] = useState(0);
     const [ proId, setProId] = useState("")
     const [proTitle, setProTitle] = useState("");
@@ -29,10 +29,8 @@ const Dashboard = (props) => {
 
 
 
-    let projectIndex = -1;
-    let btn1Index = -1;
-    let btn2Index = -1;
-    let questionsIndex = 0;
+
+  
 
     const _refreshElement = () => {
         setRefresh(Math.random(1, 10))
@@ -279,104 +277,30 @@ const Dashboard = (props) => {
             
                 (currentUser.username === process.env.REACT_APP_ADMIN) ?  
                 <><a href="/login"><button id="logout" onClick={logOut}>Logout</button></a>
-                <div id="add-content" hidden={mode}>
-                    <div className="row-container">
-                        <div className="col-container">                      
-                            <div hidden={showProject} id="project-container">
-                                <h3>Add projects</h3>
-                                <ProjectForm
-                                    _handleInputsChange={_handleInputsChange}
-                                    _handleSubmmit={_handleAddProjectSubmmit}    
-                                    proTitle={proTitle}
-                                    proDesc={proDesc}
-                                    proRepo={proRepo}
-                                    proDemo={proDemo}                 
-                                />
-                            </div>
 
-                            <div hidden={showArticle} id="article-container">
-                                <h3>Add articles</h3>
-                                <ArticleForm
-                                    _handleInputsChange={_handleInputsChange}
-                                    _handleSubmmit={_handleAddProjectSubmmit}    
-                                    proTitle={proTitle}
-                                    proDesc={proDesc}
-                                />
-                            </div>
-                        </div>
-                            
-                        </div>
-                    </div>
-                    
+                    <ManageSiteContent
+                        _handleInputsChange={_handleInputsChange}
+                        _handleSubmmit={_handleAddProjectSubmmit}    
+                        _handleDelete={_handleDelete}   
+                        proTitle={proTitle}
+                        proDesc={proDesc}
+                        proRepo={proRepo}
+                        proDemo={proDemo} 
+                        mode={mode}
+                        showProject={showProject}
+                        showArticle={showArticle}
+                        items={items}
 
-                    <div hidden={ mode===true?false:true} id="edit-content">
+                    />
 
-                        <div className="row-container">                         
-                            <div className="col-container">
-                                <div hidden={showProject} id="project-container">
-                                <h3>Edit project</h3>
-                                    <ProjectForm
-                                        _handleInputsChange={_handleInputsChange}
-                                        _handleSubmmit={_handleEditProjectSubmmit} 
-                                        _handleDelete={_handleDelete}   
-                                        proTitle={proTitle}
-                                        proDesc={proDesc}
-                                        proRepo={proRepo}
-                                        proDemo={proDemo}                 
-                                    />
-                                    
-                                </div>
-                            <div hidden={showArticle} id="article-container">
-                                <h3>Edit articles</h3>
-                                <ArticleForm
-                                    _handleInputsChange={_handleInputsChange}
-                                    _handleSubmmit={_handleAddProjectSubmmit}    
-                                    proTitle={proTitle}
-                                    proDesc={proDesc}
-                                />
-                            </div>  
-                            </div>
+                    <ManageQuestions
+                        showReplyBox={showReplyBox}
+                        questions={questions}
+                        refresh={refresh}
+                        _refreshElement={_refreshElement}
+                        inputRef={inputRef}
+                    />
 
-                            <div className="col-container">
-                                <h3>All projects</h3>
-                                <div className="row" id="project-gallery">
-                                    {items.map(project => {
-                                        return(
-                                            <>                                         
-                                            <div className="col-card" id="project-card" >
-                                                <p id={projectIndex+=1}>{project.title}</p>
-                                            </div>
-                                            </>
-                                        )
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="manage-questions"  key={refresh}> 
-                    <h3 >manage questions</h3>
-                        <div className="row">
-                            {questions.map(user => {
-                              
-                                return(
-                                <>                                         
-                                    <div className="col-card-question">
-                                    <p className="userquestion" id={questionsIndex+=1}>{user.question}</p>
-                                  
-                                    <div hidden={showReplyBox.get(questionsIndex - 1)}>
-                                        <label for="myResponse">response:</label><br />
-                                        <textarea type="text" id="myResponse" name="myResponse" value={myResponse} onChange={_handleInputsChange} ref={inputRef}/>
-                                        <button id={btn1Index+=1} className="qbutton1 qbutton">submit</button> 
-                                        <button id={btn2Index+=1} className="qbutton2 qbutton">delete</button>
-                                    </div>
-                                        <button id={questionsIndex} className="mngbtn" onClick={_refreshElement}>manage</button>
-                                    </div>
-                                </>
-                            )
-                            })}
-                        </div>
-                    
-                    </div>
                 </>: 
                 <>
                     <p>Not logged in as admin</p>

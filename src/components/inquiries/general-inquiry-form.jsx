@@ -16,7 +16,7 @@ const GeneralInquiry = (props) => {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        if(name == 'desc'){
+        if(name === 'desc'){
             setDesc(value); 
         } else if (name === "title"){
             setName(value);   

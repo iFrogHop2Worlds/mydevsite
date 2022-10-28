@@ -36,14 +36,18 @@ to build dApps (decentralized autonomous applications). I built a NFT publishing
 Instagram. To give people a place to mint any moment, share it, and experience it. The platform also
 hosted a verifiable random and automated lottery on the blockchain as well as facilitated an automated
 auctions with no 3rd party intermediary.The application was built in react/TypeScript, Solidity, python.
-and could be found here. https://github.com/Hackr-Sach/Mintagram</p>
+and could be found here. <a href='https://github.com/Hackr-Sach/Mintagram'>repository</a></p>
 
 <hr></hr>
 
 <p id='resume-text'>Full Stack Developer</p>
     <p id='resume-text'>Avalanche Hackahon - internet</p>
     <p id='resume-text'>December 2021 to January 2022</p>
-    <p id='resume-text'>The Avalanche hackathon..</p>
+    <p id='resume-text'>The Avalanche hackathon took place in December 2021. I decided to build a client which one could deploy 
+    smart contracts and then manage them as well. These contracts were essentially DAC's or decentralized autonomas communities.
+    The usecase was better management for common pool resources. reducing overhead and creating an environtment which alligned incentives and removed the need for trust
+    creating cheaper, more efficient and generally more organic institutional bodies. I built the user interface in react Ts  and avalanche js
+    and the smart contract was written in solidity. <a href='https://github.com/Hackr-Sach/CPR-institutional-management'>repository</a></p>
 
 <hr></hr>  
 
